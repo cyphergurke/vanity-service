@@ -1,4 +1,4 @@
-
+'use client'
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
@@ -25,7 +25,7 @@ type TChooseType = {
     description: any,
     content: any,
 }
-export default function ChooseType({
+export default function ContentCard({
     content,
     description,
     title
@@ -33,10 +33,10 @@ export default function ChooseType({
     return (
         <Card className="w-[300px]
          bg-black  border-none transition-all  duration-700
-         hover:opacity-70">
+         hover:opacity-70 cursor-pointer">
             <CardHeader>
-                <CardTitle>{title}</CardTitle>
-                <CardDescription>{description}</CardDescription>
+                <CardTitle className="text-slate-300 text-center">{title}</CardTitle>
+                <CardDescription className="text-slate-500">{description}</CardDescription>
             </CardHeader>
             <CardContent>
                 {content}
