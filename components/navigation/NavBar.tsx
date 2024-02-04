@@ -5,6 +5,9 @@ import Image from 'next/image'
 import logo from '../../public/cyphrkey.jpg'
 import { Button } from '../ui/button'
 import { MobileNavBar } from './MobileNavBar'
+import { Link } from '@/navigation'
+
+
 
 const NavBar = () => {
     return (
@@ -20,6 +23,11 @@ const NavBar = () => {
             </div>
             <div className=' hidden md:block mr-[7%]'>
                 <NavBarMenu />
+            </div>
+            <div className='gap-4'>
+                <Link href="/" locale="en" >English</Link>
+                
+                <Link href="/" locale="de" >Deutsch</Link>
             </div>
             <div className='mr-10 hidden md:block'>
                 <Button className='' variant="default">
