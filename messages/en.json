@@ -1,5 +1,24 @@
 {
-    "Index": {
-        "title": "Vanity Address Generator"
-    }
+  "Index": {
+    "title": "Vanity Address Generator"
+  },
+  "Form": {
+    "addrtype-title": "1. Wähle den Adresstyp aus",
+    "AddrTypeSelection": {
+      "legacy-title": "Legacy 1BTC...",
+      "legacy-text": "Bitcoin Legacy Adresse beginnend mit einer 1, \n  erlaubte Zeichen: \n 1-9, a-z, A-Z nicht erlaubte Zeichen:  0, O, l, I bis zu acht Zeichen Höhere Transaktionsgebühren",
+      "nested-segwit-title": "Nested SegWit 3Miaow...",
+      "nested-segwit-text": "erlaubte erste Zeichen: 2-9, A-Q ab zweitem Zeichen: 0-9, a-z, A-Z nicht erlaubte Zeichen: 0, O, l, I bis zu acht Zeichen Mittlere Transaktionsgebühren",
+      "native-segwit-title": "Native SegWit Bech32 bc1queen...",
+      "native-segwit-text": "Bitcoin segwit Bech32 address beginnt mit bc1q. Erlaubte Zeichen: 0-9, a-z nicht erlaubte Zeichen: 1, b, i, o bis zu zehn Zeichen Geringere Transaktionsgebühren"
+    },
+    "prefix-title": "Choose the Präfix ",
+    "refix-info": "",
+    "pubkey-title": "3. Your Public Key"
   }
+}
+
+
+
+                                          
+                                        

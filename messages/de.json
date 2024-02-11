@@ -1,5 +1,20 @@
 {
-    "Index": {
-      "title": "Vanity Adressen Generator"
-    }
+  "Index": {
+    "title": "Vanity Adressen Generator"
+  },
+  "Form": {
+    "addrtype-title": "1. Wähle den Adresstyp aus",
+    "AddrTypeSelection": {
+      "legacy-title": "Legacy 1BTC...",
+      "legacy-text": "Legacy Adresse beginnend mit einer 1,\n  erlaubte Zeichen: 1-9, a-z, A-Z \n nicht erlaubte Zeichen: 0, O, l, I \n bis zu acht Zeichen\n Höhere Transaktionsgebühren",
+      "nested-segwit-title": "Nested SegWit 3Miaow...",
+      "nested-segwit-text": "Nested SegWit erlaubte erste Zeichen: 2-9, A-Q ab zweitem Zeichen: 0-9, a-z, A-Z nicht erlaubte Zeichen: 0, O, l, I bis zu acht Zeichen Mittlere Transaktionsgebühren",
+      "native-segwit-title": "Native SegWit bc1queen...",
+      "native-segwit-text": "Native SegWit Bech32 address beginnt mit bc1q. Erlaubte Zeichen: 0-9, a-z nicht erlaubte Zeichen: 1, b, i, o bis zu zehn Zeichen Geringere Transaktionsgebühren"
+    },
+    "prefix-title": "2. Wähle den Präfix aus",
+    "prefix-sub-title": "Welche Zeichen sollen in der Adresse enthalten sein? \n (Eingabe ohne Adresstyp)",
+    "prefix-casesensitive": "Groß- und Kleinschreibung",
+    "pubkey-title": "3. Eingabe des öffentlichen Schlüssels (Compressed WIF Pubkey)"
   }
+}
