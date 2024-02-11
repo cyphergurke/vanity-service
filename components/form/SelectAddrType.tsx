@@ -3,47 +3,47 @@
 import React from 'react'
 import ContentCard from './ContentCard'
 
-const SelectAddrType = () => {
-    return ( 
-        <>
-        
-    <div className="flex flex-row gap-10 ">
-    <div onClick={() => console.log("awdawdawdawdawdalwidhalwkdjhlawkdjhl")}>
-      <ContentCard
-        title="Legacy 1BTC..."
-        description="
-        awdawdawda
-        "
-        content={<p className="text-white"> Bitcoin Legacy Adresse
-          beginnend mit einer 1,&nbsp;
+export const paragraphs = (text: string) => {
+  return text.split('\n').map((line, index) => (
+    <p className="text-white" key={index}>
+      {line}
+    </p>
+  ));
+}
 
-          erlaubte Zeichen:&nbsp;1-9, a-z, A-Z
-          nicht erlaubte Zeichen: 0, O, l, I
-          bis zu acht Zeichen
-          Höhere Transaktionsgebühren</p>}
-      />
+const SelectAddrType = ({ translate }: any) => {
+  return (
+    <>
+      <h2 className='text-white text-2xl'>{translate.addrtypeTitle}</h2>
+      <div className="flex w-3/4 flex-row gap-10 ">
+        <div
+          className='w-1/3'
+          onClick={() => console.log("awdawdawdawdawdalwidhalwkdjhlawkdjhl")}>
+          <ContentCard
+            title={translate.legacyTitle}
+            description=""
+            content={paragraphs(translate.legacyText)}
+
+          />
+        </div>
+        <div className='w-1/3'
+          onClick={() => console.log("awdawdawdawdawdalwidhalwkdjhlawkdjhl")}>
+          <ContentCard
+            title={translate.nestedSegwitTitle}
+            description=""
+            content={paragraphs(translate.nestedSegwitText)}
+          />
+        </div>
+        <div className='w-1/3' >
+          <ContentCard
+            title={translate.nativeSegwitTitle}
+            description=""
+            content={paragraphs(translate.nativeSegwitText)}
+          />
+        </div>
       </div>
-      <div onClick={() => console.log("awdawdawdawdawdalwidhalwkdjhlawkdjhl")}>
-      <ContentCard
-        title="Nested SegWit 3Miaow..."
-        description="awdawdawd"
-        content={<p className="text-white">erlaubte erste Zeichen: 2-9, A-Q
-          ab zweitem Zeichen: 0-9, a-z, A-Z
-          nicht erlaubte Zeichen: 0, O, l, I
-          bis zu acht Zeichen
-          Mittlere Transaktionsgebühren</p>}
-      />
-       </div>
-    </div>
-    <div className="flex flex-row mt-10">
-      <ContentCard
-        title=" Native Segwit bc1q... "
-        description=""
-        content={<p>awdawd</p>}
-      />
-    </div>
     </>
-    )
+  )
 }
 
 export default SelectAddrType
