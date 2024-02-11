@@ -1,34 +1,59 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from '../ui/input';
-import { useTranslations } from 'next-intl';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import { validatePublicKey } from 'unchained-bitcoin';
 
-const PubKey = ({ translate }: any) => {
+
+type TPubKey = {
+  translate: any;
+  pubKey: string;
+  setPubKey: React.Dispatch<React.SetStateAction<string>>
+}
+
+
+const PubKey = ({ translate, pubKey, setPubKey }: TPubKey) => {
+  const [pubkeyErr, setPubkeyErr] = useState('')
+
+  useEffect(() => {
+    if (!pubKey) {
+      setPubkeyErr('')
+      return
+    }
+    const validate = validatePublicKey(pubKey)
+    console.log(validate)
+    setPubkeyErr(validate)
+  }, [pubKey])
 
   return (
-    <>
+    < >
       <h2 className='text-white text-2xl'>
         {translate.pubkeyTitle}
       </h2>
-      <div>
-        <Card className="w-[300px]
+      <div className='mt-10'>
+        <Card className="w-[400px]
          bg-black  border-none transition-all  duration-700
-         hover:shadow-white shadow-lg shadow-accent-foreground cursor-pointer">
+         hover:shadow-white shadow-lg shadow-accent-foreground">
           <CardHeader>
             <CardTitle className="text-slate-300 text-center">
               {translate.prefixTitle}
             </CardTitle>
-            <CardDescription className="text-slate-500">
-
+            <CardDescription className=" text-white">
+             Unkomprimierte sowie comprimierte Public Keys akzeptiert
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Input />
+            <Input className={`text-white text-lg ${pubKey && (pubkeyErr
+              ? 'border-red-500'
+              : 'border-green-500')}`} onChange={(e) => setPubKey(e.target.value)} />
+            {pubkeyErr
+              ? <p className='text-red-500'>{pubkeyErr}</p>
+              : ''}
+
           </CardContent>
           <CardFooter className="flex justify-center">
-            <Input type='checkbox'></Input>
+
           </CardFooter>
         </Card>
       </div>

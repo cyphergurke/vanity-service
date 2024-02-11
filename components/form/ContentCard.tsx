@@ -15,18 +15,20 @@ type TChooseType = {
     title: string,
     description: any,
     content: any,
-    button?: any
+    button?: any,
+    classNames?: string
 }
 export default function ContentCard({
+    classNames,
     content,
     description,
     title,
     button
 }: TChooseType) {
     return (
-        <Card className="w-full
-         bg-black  border-none transition-all  duration-700
-         hover:shadow-white shadow-lg shadow-accent-foreground cursor-pointer">
+        <Card className={`${classNames} w-full
+          border-none transition-all  duration-700
+        hover:shadow-white shadow-lg shadow-accent-foreground cursor-pointer`} >
             <CardHeader>
                 <CardTitle className="text-slate-300 text-center text-xl ">{title}</CardTitle>
                 <CardDescription className="text-slate-500">{description}</CardDescription>

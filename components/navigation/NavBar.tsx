@@ -25,9 +25,9 @@ const NavBar = () => {
                 <NavBarMenu />
             </div>
             <div className='gap-4'>
-                <Link href="/" locale="en" >English</Link>
+                <Link className='text-white font-semibold pl-2' href="/" locale="en" >English</Link>
                 
-                <Link href="/" locale="de" >Deutsch</Link>
+                <Link className='text-white font-semibold pl-2' href="/" locale="de" >Deutsch</Link>
             </div>
             <div className='mr-10 hidden md:block'>
                 <Button className='' variant="default">
