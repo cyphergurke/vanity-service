@@ -6,10 +6,20 @@ body {
   padding: 0;
   margin: 0;
 }
-.bg-main {
 
-  background: rgb(242,0,0);
-background: linear-gradient(260deg, rgba(242,0,0,1) 0%, rgba(228,36,0,1) 19%, rgba(255,174,0,1) 100%);
+.bg-main {
+  background: rgb(242, 0, 0);
+  background: linear-gradient(260deg, rgba(242, 0, 0, 1) 0%, rgba(228, 36, 0, 1) 19%, rgba(255, 174, 0, 1) 100%);
+}
+
+.bg-blue-gradient {
+  background: rgb(15, 12, 29);
+  background: linear-gradient(163deg, rgb(37, 35, 43) 0%, rgb(30, 32, 51) 19%, rgba(0, 18, 72, 1) 93%);
+}
+
+.bg-dark-blue-gradient {
+  background: rgb(65, 37, 201);
+  background: linear-gradient(163deg, rgba(65, 37, 201, 1) 0%, rgba(14, 61, 130, 1) 19%, rgba(0, 18, 72, 1) 66%);
 }
 
 @layer base {
@@ -88,14 +98,17 @@ background: linear-gradient(260deg, rgba(242,0,0,1) 0%, rgba(228,36,0,1) 19%, rg
 
 /* This styles the scrollbar track (the part the scrollbar moves along) */
 ::-webkit-scrollbar-track {
-  background: #F10000; /* Light grey track background */
-   /* Adds rounded corners to the track */
+  background: #F10000;
+  /* Light grey track background */
+  /* Adds rounded corners to the track */
 }
 
 /* This styles the scrollbar thumb (the part that is draggable) */
 ::-webkit-scrollbar-thumb {
-  background: #242424; /* Dark grey scrollbar thumb */
-  border-radius: 10px; /* Rounded corners on the scrollbar thumb */
+  background: #242424;
+  /* Dark grey scrollbar thumb */
+  border-radius: 10px;
+  /* Rounded corners on the scrollbar thumb */
   transition: all;
   transition-duration: 200ms;
 }
@@ -105,11 +118,13 @@ background: linear-gradient(260deg, rgba(242,0,0,1) 0%, rgba(228,36,0,1) 19%, rg
   background: #555;
   transition: all;
   transition-duration: 200ms;
-   /* Darker shade on hover for the scrollbar thumb */
+  /* Darker shade on hover for the scrollbar thumb */
 }
 
 /* This styles the scrollbar itself (including the thumb, the track, and the buttons) */
 ::-webkit-scrollbar {
-  width: 8px; /* Makes the scrollbar thin */
-  height: 8px; /* For horizontal scrollbars, makes them thin as well */
+  width: 8px;
+  /* Makes the scrollbar thin */
+  height: 8px;
+  /* For horizontal scrollbars, makes them thin as well */
 }

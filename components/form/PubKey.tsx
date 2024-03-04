@@ -32,7 +32,7 @@ const PubKey = ({ translate, pubKey, setPubKey }: TPubKey) => {
         {translate.pubkeyTitle}
       </h2>
       <div className='mt-10'>
-        <Card className="w-[400px]
+        <Card className="mx-auto w-[80%]
          bg-black  border-none transition-all  duration-700
          hover:shadow-white shadow-lg shadow-accent-foreground">
           <CardHeader>
@@ -40,7 +40,7 @@ const PubKey = ({ translate, pubKey, setPubKey }: TPubKey) => {
               {translate.prefixTitle}
             </CardTitle>
             <CardDescription className=" text-white">
-             Unkomprimierte sowie comprimierte Public Keys akzeptiert
+            {translate.pubkeyText}
             </CardDescription>
           </CardHeader>
           <CardContent>

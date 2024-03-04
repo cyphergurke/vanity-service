@@ -1,24 +1,33 @@
 {
   "Index": {
-    "title": "Vanity Adressen Generator"
+    "title": "Vanity Address Generator"
   },
   "Form": {
-    "addrtype-title": "1. Wähle den Adresstyp aus",
+    "addrtype-title": "1. Select the address type",
     "addrTypeSelection": {
       "legacy-title": "Legacy 1BTC...",
-      "legacy-text": "Legacy Adresse beginnend mit einer 1,\n  erlaubte Zeichen: 1-9, a-z, A-Z \n nicht erlaubte Zeichen: 0, O, l, I \n bis zu acht Zeichen\n Höhere Transaktionsgebühren",
+      "legacy-text": "Legacy address starting with a 1,\n allowed characters: 1-9, a-z, A-Z, not allowed characters: 0, O, l, I\n up to eight characters\n Higher transaction fees",
       "nested-segwit-title": "Nested SegWit 3Miaow...",
-      "nested-segwit-text": "Nested SegWit erlaubte erste Zeichen: 2-9, A-Q ab zweitem Zeichen: 0-9, a-z, A-Z nicht erlaubte Zeichen: 0, O, l, I bis zu acht Zeichen Mittlere Transaktionsgebühren",
+      "nested-segwit-text": "Nested SegWit allowed first characters: 2-9, A-Q from second character: 0-9, a-z, A-Z, not allowed characters: 0, O, l, I\n up to eight characters\n Medium transaction fees",
       "native-segwit-title": "Native SegWit bc1queen...",
-      "native-segwit-text": "Native SegWit Bech32 address beginnt mit bc1q. Erlaubte Zeichen: 0-9, a-z nicht erlaubte Zeichen: 1, b, i, o bis zu zehn Zeichen Geringere Transaktionsgebühren"
+      "native-segwit-text": "Native SegWit Bech32 address\n starts with bc1q.\n Allowed characters: 0, 2-9, a-z, not allowed characters: 1, b, i, o\n up to ten characters\n Lower transaction fees"
     },
     "prefix": {
-      "prefix-title": "2. Wähle den Präfix aus",
-      "prefix-sub-title": "Welche Zeichen sollen in der Adresse enthalten sein? \n (Eingabe ohne Adresstyp)",
-      "prefix-casesensitive": "Groß- und Kleinschreibung"
-    },"pubkey": {
-      "title": "3. Eingabe des öffentlichen Schlüssels",
-      "text": "Unkomprimierte sowie comprimierte Public Keys akzeptiert"
+      "title": "2. Select the prefix",
+      "subtitle": "What characters should be included in the address?\n (Input without address type)",
+      "casesensitive": "Case-sensitive"
+    },
+    "price":{
+      "price": "Price",
+      "addr-type": "Address type",
+      "prefix-lenght": "Prefixlength",
+      "price-title": "Preis Calculation",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "pubkey": {
+      "title": "3. Enter the public key",
+      "text": "Uncompressed and compressed public keys accepted"
     }
   }
 }

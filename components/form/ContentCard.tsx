@@ -28,7 +28,7 @@ export default function ContentCard({
     return (
         <Card className={`${classNames} w-full
           border-none transition-all  duration-700
-        hover:shadow-white shadow-lg shadow-accent-foreground cursor-pointer`} >
+        hover:shadow-white shadow-lg cursor-pointer`} >
             <CardHeader>
                 <CardTitle className="text-slate-300 text-center text-xl ">{title}</CardTitle>
                 <CardDescription className="text-slate-500">{description}</CardDescription>

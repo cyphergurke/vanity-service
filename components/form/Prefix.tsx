@@ -45,10 +45,7 @@ const Prefix = ({
   caseSensitive,
   setCaseSensitive,
 }: TPrefix) => {
-  const [previewPrefix, setPreviewPrefix] = useState('')
-
   const validateAddressPrefix = () => {
-
     const rule: any = rules[addrType];
 
     if (!rule) {
@@ -73,16 +70,6 @@ const Prefix = ({
     validateAddressPrefix()
   }, [prefixStr, addrType])
 
- /*  function randomCase(str: string): string {
-    let result = '';
-    const charArray = str.split('');
-    for (let i = 0; i < charArray.length; i++) {
-      const char = charArray[i];
-      const isLower = Math.random() < 0.5;
-      result += isLower ? char.toLowerCase() : char.toUpperCase();
-    }
-    return result;
-  } */
   function randomCase(str: string): string {
     let result = '';
     const charArray = str.split('');
@@ -111,24 +98,29 @@ const Prefix = ({
         {translate.prefixTitle}
       </h2>
       <div className='mt-10'>
-        <Card className="w-[400px]
+        <Card className="mx-auto w-[80%] lg:w-[400px]
          bg-black  border-none transition-all  duration-700
          hover:shadow-white shadow-lg shadow-accent-foreground ">
           <CardHeader>
             <CardTitle className="text-slate-300 text-center">
             </CardTitle>
-            <CardDescription className="text-slate-500">
+            <CardDescription className="text-white">
               {translate.prefixSubTitle}
 
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className='flex flex-row text-white items-center'>
-              <p className='text-xl mr-2 items-center'>
+            <div className='flex flex-row text-white items-center text-center '>
+              <p className='text-xl mr-2 items-center ml-auto'>
                 {addrType}
               </p>
               {' '}
-              <Input name="prefix" onChange={(e) => setPrefixStr(e.target.value)} className='text-white text-xl' />
+              <Input name="prefix"
+                type='text'
+                maxLength={10}
+                onChange={(e) => setPrefixStr(e.target.value)}
+                className='text-white text-xl mr-auto w-1/2 '
+              />
             </div>
             <p className='text-white text-center mt-2'>
               {addrType}{caseSensitive ? prefixStr : randomCase(prefixStr)}...

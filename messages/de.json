@@ -15,11 +15,20 @@
     "prefix": {
       "title": "2. Wähle den Präfix aus",
       "subtitle": "Welche Zeichen sollen in der Adresse enthalten sein? \n (Eingabe ohne Adresstyp)",
-      "casesensitive": "Groß- und Kleinschreibung beachten."
+      "casesensitive": "Groß- und Kleinschreibung beachten"
+    },
+    "price":{
+      "price": "Preis",
+      "addr-type": "Adress Typ",
+      "prefix-lenght": "Präfixlänge",
+      "price-title": "Preis Berechnung",
+      "yes": "Ja",
+      "no": "Nein"
     },
     "pubkey": {
       "title": "3. Eingabe des öffentlichen Schlüssels",
       "text": "Unkomprimierte sowie comprimierte Public Keys akzeptiert"
+ 
     }
   }
 }

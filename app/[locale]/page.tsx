@@ -20,7 +20,13 @@ export default function Home() {
   const prefixTranslation = {
     prefixTitle: f('prefix.title'),
     prefixSubTitle: f('prefix.subtitle'),
-    prefixCasesensitive: f('prefix.casesensitive')
+    prefixCasesensitive: f('prefix.casesensitive'),
+    price: f('price.price'),
+    addrType: f('price.addr-type'),
+    prefixLenght: f('price.prefix-lenght'),
+    priceTitle: f('price.price-title'),
+    yes: f('price.yes'),
+    no: f('price.no'),
   }
 
   const pubkeyTranslation = {
