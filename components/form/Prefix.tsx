@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Checkbox } from '../ui/checkbox'
 import { Label } from '../ui/label'
 import { TprefixTranslation } from '@/types'
+import { rule } from 'postcss'
 
 type TPrefix = {
   translate: TprefixTranslation,
@@ -52,16 +53,13 @@ const Prefix = ({
       return;
     }
     if (prefixStr.length < 1) return
-    if (prefixStr.length > rule.maxLength) {
-      return `${rule.typeName} address prefix cannot be more than ${rule.maxLength} characters.`;
-    }
     // Check for disallowed characters
     if (rule.disallowed.test(prefixStr)) {
-      return `Disallowed character detected in ${rule.typeName} address prefix.`;
+      return `${translate.disallowedPrefix}`;
     }
     // Check if all characters are allowed
     if (!rule.allowed.test(prefixStr)) {
-      return `Invalid characters in ${rule.typeName} address prefix.`;
+      return `${translate.invalidPrefix}`;
     }
     // updateFormData()
   };
@@ -75,11 +73,11 @@ const Prefix = ({
     const charArray = str.split('');
     const isLowerCase = addrType === "1" || addrType === "3";
     const isUpperCase = addrType === "3";
-    
+
     for (let i = 0; i < charArray.length; i++) {
       const char = charArray[i];
       const isLower = Math.random() < 0.5;
-      
+
       if (isLowerCase && (char === "o" || char === "i")) {
         result += char;
       } else if (isUpperCase && i === 0) {
@@ -88,7 +86,7 @@ const Prefix = ({
         result += isLower ? char.toLowerCase() : char.toUpperCase();
       }
     }
-    
+
     return result;
   }
 
@@ -106,7 +104,6 @@ const Prefix = ({
             </CardTitle>
             <CardDescription className="text-white">
               {translate.prefixSubTitle}
-
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -117,7 +114,7 @@ const Prefix = ({
               {' '}
               <Input name="prefix"
                 type='text'
-                maxLength={10}
+                maxLength={rules[addrType].maxLength}
                 onChange={(e) => setPrefixStr(e.target.value)}
                 className='text-white text-xl mr-auto w-1/2 '
               />

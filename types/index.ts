@@ -12,6 +12,8 @@ export type TprefixTranslation = {
     prefixTitle: string;
     prefixSubTitle: string;
     prefixCasesensitive: string;
+    disallowedPrefix: string;
+    invalidPrefix: string;
 }
 
 export type TpubkeyTranslation = {
