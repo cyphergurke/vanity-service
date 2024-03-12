@@ -16,6 +16,7 @@
       "title": "2. Wähle den Präfix aus",
       "subtitle": "Welche Zeichen sollen in der Adresse enthalten sein? \n (Eingabe ohne Adresstyp)",
       "disallowed-prefix": "Präfix enthält nicht Erlaubtes Zeichen.",
+      "disallowedfirstchar": "Nicht erlaubtes Zeichen an erster Stelle:",
       "invalid-prefix": "Fehlerhaftes Zeichen im Adress-Präfix",
       "casesensitive": "Groß- und Kleinschreibung beachten"
     },

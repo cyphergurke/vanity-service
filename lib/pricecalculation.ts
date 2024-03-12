@@ -1,7 +1,6 @@
 
-export function calculatePrice(_addresstype, praefixLength, _praefix_casesensitive) {
+export async function calculatePrice(_addresstype: string, praefixLength: number, _praefix_casesensitive: boolean) {
 
-  let prices = [];
   let praefix_price = 0;
   let praefix_cs_price = 0;
 
@@ -133,9 +132,6 @@ export function calculatePrice(_addresstype, praefixLength, _praefix_casesensiti
     }
   }
 
-  prices['praefix'] = praefix_price;
-  prices['praefix_cs'] = Math.round(praefix_cs_price);
-  prices['sum'] = prices['praefix'] + prices['praefix_cs'];
-
-  return prices;
+  const price = praefix_price + Math.round(praefix_cs_price) 
+  return price;
 }

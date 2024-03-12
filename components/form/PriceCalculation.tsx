@@ -1,3 +1,5 @@
+'use client'
+
 import { calculatePrice } from '@/lib/pricecalculation'
 import React, { useEffect, useState } from 'react'
 
@@ -6,15 +8,17 @@ type TPriceCalculation = {
     addrType: string,
     prefixLen: number,
     caseSensitive: boolean,
+    price: number | undefined;
+    setPrice: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
-const PriceCalculation = ({ translate, addrType, prefixLen, caseSensitive }: TPriceCalculation) => {
-    const [price, setPrice] = useState<number>()
+const PriceCalculation = ({ translate, addrType, prefixLen, caseSensitive, setPrice, price }: TPriceCalculation) => {
+    
 
 
 
     useEffect(() => {
-        const newprice: any = calculatePrice(addrType, prefixLen, caseSensitive)
-        setPrice(newprice.sum)
+            const newprice: any =calculatePrice(addrType, prefixLen, caseSensitive)
+            setPrice(newprice)
     }, [addrType, prefixLen, caseSensitive])
 
 

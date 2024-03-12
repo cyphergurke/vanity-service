@@ -13,6 +13,7 @@ export type TprefixTranslation = {
     prefixSubTitle: string;
     prefixCasesensitive: string;
     disallowedPrefix: string;
+    disallowedfirstchar: string;
     invalidPrefix: string;
 }
 

@@ -22,6 +22,7 @@ export default function Home() {
     prefixSubTitle: f('prefix.subtitle'),
     prefixCasesensitive: f('prefix.casesensitive'),
     disallowedPrefix: f('prefix.disallowed-prefix'),
+    disallowedfirstchar: f('prefix.disallowedfirstchar'),
     invalidPrefix: f('prefix.invalid-prefix'),
     price: f('price.price'),
     addrType: f('price.addr-type'),

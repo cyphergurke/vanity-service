@@ -9,22 +9,15 @@ import { validatePublicKey } from 'unchained-bitcoin';
 type TPubKey = {
   translate: any;
   pubKey: string;
-  setPubKey: React.Dispatch<React.SetStateAction<string>>
+  setPubKey: React.Dispatch<React.SetStateAction<string>>;
+  pubkeyErr: string;
 }
 
 
-const PubKey = ({ translate, pubKey, setPubKey }: TPubKey) => {
-  const [pubkeyErr, setPubkeyErr] = useState('')
+const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
 
-  useEffect(() => {
-    if (!pubKey) {
-      setPubkeyErr('')
-      return
-    }
-    const validate = validatePublicKey(pubKey)
-    console.log(validate)
-    setPubkeyErr(validate)
-  }, [pubKey])
+
+
 
   return (
     < >
@@ -40,13 +33,13 @@ const PubKey = ({ translate, pubKey, setPubKey }: TPubKey) => {
               {translate.prefixTitle}
             </CardTitle>
             <CardDescription className=" text-white">
-            {translate.pubkeyText}
+              {translate.pubkeyText}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Input className={`text-white text-lg ${pubKey && (pubkeyErr
               ? 'border-red-500'
-              : 'border-green-500')}`} onChange={(e) => setPubKey(e.target.value)} />
+              : 'border-green-500')}`} onChange={(e) => pubkeyErr === '' ? setPubKey(e.target.value) : setPubKey('')} />
             {pubkeyErr
               ? <p className='text-red-500'>{pubkeyErr}</p>
               : ''}

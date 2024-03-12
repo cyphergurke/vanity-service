@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Checkbox } from '../ui/checkbox'
 import { Label } from '../ui/label'
 import { TprefixTranslation } from '@/types'
-import { rule } from 'postcss'
+import { rules, validateAddressPrefix } from '@/lib/prefixValidation'
 
 type TPrefix = {
   translate: TprefixTranslation,
@@ -17,26 +17,6 @@ type TPrefix = {
   setCaseSensitive: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const rules: any = {
-  "1": {
-    allowed: /^[1-9A-HJ-NP-Za-km-z]+$/,
-    disallowed: /[0OIl]/,
-    maxLength: 8,
-    typeName: "Legacy",
-  },
-  "3": {
-    allowed: /^[2-9A-Q][0-9A-Za-z]*$/,
-    disallowed: /[0OIl]/,
-    maxLength: 8,
-    typeName: "Nested SegWit",
-  },
-  "bc1q": {
-    allowed: /^[0-9a-qs-z]{1,10}$/,
-    disallowed: /[1bio]/,
-    maxLength: 10,
-    typeName: "Native SegWit Bech32",
-  },
-};
 
 const Prefix = ({
   translate,
@@ -46,26 +26,13 @@ const Prefix = ({
   caseSensitive,
   setCaseSensitive,
 }: TPrefix) => {
-  const validateAddressPrefix = () => {
-    const rule: any = rules[addrType];
-
-    if (!rule) {
-      return;
-    }
-    if (prefixStr.length < 1) return
-    // Check for disallowed characters
-    if (rule.disallowed.test(prefixStr)) {
-      return `${translate.disallowedPrefix}`;
-    }
-    // Check if all characters are allowed
-    if (!rule.allowed.test(prefixStr)) {
-      return `${translate.invalidPrefix}`;
-    }
-    // updateFormData()
-  };
+  const [errors, seterrors] = useState<any | null>(null)
 
   useEffect(() => {
-    validateAddressPrefix()
+    if (prefixStr.length > 0) {
+      const validateErr: any = validateAddressPrefix(addrType, prefixStr, translate)
+      seterrors(validateErr)
+    } else seterrors(null)
   }, [prefixStr, addrType])
 
   function randomCase(str: string): string {
@@ -122,7 +89,7 @@ const Prefix = ({
             <p className='text-white text-center mt-2'>
               {addrType}{caseSensitive ? prefixStr : randomCase(prefixStr)}...
             </p>
-            <p className='text-red-500'>{validateAddressPrefix()}</p>
+            <div className='text-red-500 text-center'>{errors}</div>
           </CardContent>
           <CardFooter className="flex justify-center">
             <Checkbox
