@@ -11,7 +11,7 @@ export const connectToDatabase = async () => {
 
     try {
         await mongoose.connect(process.env.MONGODB_URL, {
-            dbName: 'overstackingflow',
+            dbName: 'vanity',
         })
         isConnected = true;
         console.log('connection successful');

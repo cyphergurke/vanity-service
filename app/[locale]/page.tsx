@@ -36,10 +36,17 @@ export default function Home() {
     pubkeyTitle: f('pubkey.title'),
     pubkeyText: f('pubkey.text'),
   }
+
+  const contactTranslation = {
+    contactTitle: f('contact.title'),
+    contactText: f('contact.text'),
+  }
+
   const translation = {
     addrTypeTranslation,
     prefixTranslation,
     pubkeyTranslation,
+    contactTranslation
   }
 
   return (

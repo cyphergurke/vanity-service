@@ -31,6 +31,10 @@
     "pubkey": {
       "title": "3. Enter the public key",
       "text": "Uncompressed and compressed public keys accepted"
+    },
+    "contact": {
+      "title": "4. Enter Email or LNURL",
+      "text": "For recieving the Vanity Address and the Partial Private Key"
     }
   }
 }

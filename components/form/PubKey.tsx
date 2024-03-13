@@ -39,7 +39,7 @@ const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
           <CardContent>
             <Input className={`text-white text-lg ${pubKey && (pubkeyErr
               ? 'border-red-500'
-              : 'border-green-500')}`} onChange={(e) => pubkeyErr === '' ? setPubKey(e.target.value) : setPubKey('')} />
+              : 'border-green-500')}`} onChange={(e) => setPubKey(e.target.value)} />
             {pubkeyErr
               ? <p className='text-red-500'>{pubkeyErr}</p>
               : ''}

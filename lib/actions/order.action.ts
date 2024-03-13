@@ -17,9 +17,9 @@ export async function getOrder(params?:  any) {
 export async function createOrder(params: any) {
     try {
         connectToDatabase();
-        const { addtype, prefixstr, casesensitive, publickey, price, createdAt } = params;
-        const order = await Order.create({ addtype, prefixstr, casesensitive, publickey, price, createdAt })
-        return order
+        const order = await Order.create(params)
+        const orderstr = JSON.stringify(order)
+        return orderstr
     } catch (err: any) {
         console.log(err.message)
     }

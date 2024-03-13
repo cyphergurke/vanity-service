@@ -12,13 +12,13 @@ type TPriceCalculation = {
     setPrice: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 const PriceCalculation = ({ translate, addrType, prefixLen, caseSensitive, setPrice, price }: TPriceCalculation) => {
-    
+
 
 
 
     useEffect(() => {
-            const newprice: any =calculatePrice(addrType, prefixLen, caseSensitive)
-            setPrice(newprice)
+        const newprice: any = calculatePrice(addrType, prefixLen, caseSensitive)
+        setPrice(newprice)
     }, [addrType, prefixLen, caseSensitive])
 
 

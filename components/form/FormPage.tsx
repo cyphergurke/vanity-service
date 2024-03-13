@@ -8,6 +8,8 @@ import PriceCalculation from './PriceCalculation'
 import { Button } from '../ui/button'
 import { validatePublicKey } from 'unchained-bitcoin'
 import { createOrder } from '@/lib/actions/order.action'
+import { IOrder } from '@/lib/actions/order.model'
+import Contact from './Contact'
 
 const FormPage = ({ translation }: any) => {
     const [price, setPrice] = useState<number>()
@@ -16,6 +18,9 @@ const FormPage = ({ translation }: any) => {
     const [caseSensitive, setCaseSensitive] = useState(true)
     const [pubKey, setPubKey] = useState('')
     const [pubkeyErr, setPubkeyErr] = useState('')
+    const [order, setOrder] = useState<IOrder>()
+    const [email, setEmail] = useState('')
+    const [lnurl, setLnUrl] = useState('')
 
     const sectionRefs = {
         selectAddrType: React.createRef<HTMLDivElement>(),
@@ -32,18 +37,25 @@ const FormPage = ({ translation }: any) => {
 
     const onsubmit = async () => {
         console.log("03a34b99f22c790c4e36b2b3c2c35a36db06226e41c692fc82b8b56ac1c540c5bd")
+        const pub = "03a34b99f22c790c4e36b2b3c2c35a36db06226e41c692fc82b8b56ac1c540c5bd"
+        if (!price && !pubKey) return;
         const data = {
             addtype: addrType,
             prefixstr: prefixStr,
             casesensitive: caseSensitive ? 1 : 0,
-            publickey: pubKey,
-            price: price,
+            publickey: pub,
+            email: email,
+            lnurl: lnurl,
+            price: 1,
             createdAt: new Date,
         }
+        console.log(data)
 
         try {
-            const result = await createOrder(data)
-            console.log(result)
+            const orderstr = await createOrder(data)
+            const jsonorder = JSON.parse(orderstr!)
+            console.log(jsonorder.price)
+            setOrder(jsonorder)
         } catch (error: any) {
             console.log(error.message)
         }
@@ -76,7 +88,6 @@ const FormPage = ({ translation }: any) => {
                 <>
                     <section
                         className="flex flex-col lg:flex-col justify-center gap-10 items-center"
-                        ref={sectionRefs.prefix}
                     >
                         <Prefix
                             addrType={addrType}
@@ -97,13 +108,22 @@ const FormPage = ({ translation }: any) => {
                     </section>
                     <section
                         className="flex flex-col justify-center  items-center"
-                        ref={sectionRefs.pubKey}
+
                     >
                         <PubKey
                             pubKey={pubKey}
                             setPubKey={setPubKey}
                             pubkeyErr={pubkeyErr}
                             translate={translation.pubkeyTranslation}
+                        />
+                    </section>
+                    <section className="flex flex-col justify-center  items-center" >
+                        <Contact
+                            translate={translation.contactTranslation}
+                            email={email}
+                            lnurl={lnurl}
+                            setEmail={setEmail}
+                            setLnUrl={setLnUrl}
                         />
                     </section>
                     <section>
