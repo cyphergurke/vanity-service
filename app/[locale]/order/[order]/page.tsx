@@ -1,12 +1,9 @@
 import React from 'react'
 
-type TPage = {
- params: { order: string }
-}
-const page = ({ params }: TPage) => {
+const page = ({ params }: any) => {
     return (
         <div className='flex justify-center items-center'>
-            <p>
+            <p className='text-xl text-white'>
                 {params.order}
             </p>
         </div>

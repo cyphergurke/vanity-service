@@ -10,6 +10,7 @@ import { validatePublicKey } from 'unchained-bitcoin'
 import { createOrder } from '@/lib/actions/order.action'
 import { IOrder } from '@/lib/actions/order.model'
 import Contact from './Contact'
+import { usePathname, useRouter } from 'next/navigation'
 
 const FormPage = ({ translation }: any) => {
     const [price, setPrice] = useState<number>()
@@ -21,6 +22,9 @@ const FormPage = ({ translation }: any) => {
     const [order, setOrder] = useState<IOrder>()
     const [email, setEmail] = useState('')
     const [lnurl, setLnUrl] = useState('')
+
+    const router = useRouter()
+    const pathname = usePathname()
 
     const sectionRefs = {
         selectAddrType: React.createRef<HTMLDivElement>(),
@@ -54,8 +58,7 @@ const FormPage = ({ translation }: any) => {
         try {
             const orderstr = await createOrder(data)
             const jsonorder = JSON.parse(orderstr!)
-            console.log(jsonorder.price)
-            setOrder(jsonorder)
+            router.push(`${pathname}/order/${jsonorder._id}`)
         } catch (error: any) {
             console.log(error.message)
         }
