@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { RefObject, useEffect, useState } from 'react'
 import Prefix from './Prefix'
-import PubKey from './PubKey'
+import PubKey from '../pubkey/PubKey'
 import SelectAddrType from './SelectAddrType'
 import PriceCalculation from './PriceCalculation'
 import { Button } from '../ui/button'
@@ -11,6 +11,14 @@ import { createOrder } from '@/lib/actions/order.action'
 import { IOrder } from '@/lib/actions/order.model'
 import Contact from './Contact'
 import { usePathname, useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { PubKeyDialog } from '../pubkey/Dialog'
+
+export type TSectionRef = {
+    selectAddrType: RefObject<HTMLDivElement>,
+    prefix: RefObject<HTMLDivElement>,
+    pubKey: RefObject<HTMLDivElement>
+}
 
 const FormPage = ({ translation }: any) => {
     const [price, setPrice] = useState<number>()
@@ -26,13 +34,22 @@ const FormPage = ({ translation }: any) => {
     const router = useRouter()
     const pathname = usePathname()
 
-    const sectionRefs = {
+    const sectionRefs: TSectionRef = {
         selectAddrType: React.createRef<HTMLDivElement>(),
         prefix: React.createRef<HTMLDivElement>(),
         pubKey: React.createRef<HTMLDivElement>()
     }
+    const scrollToSection = (nextSectionRef: RefObject<HTMLDivElement>) => {
+        if (nextSectionRef.current) {
+            nextSectionRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+    };
 
     useEffect(() => {
+        console.log(addrType)
         if (addrType) {
             sectionRefs.prefix.current?.scrollIntoView({ behavior: 'smooth' })
         }
@@ -81,7 +98,10 @@ const FormPage = ({ translation }: any) => {
                 className="flex flex-col justify-center  items-center"
                 ref={sectionRefs.selectAddrType}
             >
+
                 <SelectAddrType
+                    prefixRef={sectionRefs.prefix}
+                    scroll={scrollToSection}
                     addrType={addrType}
                     setAddrType={setAddrType}
                     translate={translation.addrTypeTranslation}
@@ -90,9 +110,10 @@ const FormPage = ({ translation }: any) => {
             {addrType && (
                 <>
                     <section
-                        className="flex flex-col lg:flex-col justify-center gap-10 items-center"
+                        className="flex flex-col lg:flex-col justify-center  gap-10 items-center"
+                        ref={sectionRefs.prefix}
                     >
-                        <Prefix
+                        <Prefix 
                             addrType={addrType}
                             prefixStr={prefixStr}
                             setPrefixStr={setPrefixStr}
@@ -111,7 +132,6 @@ const FormPage = ({ translation }: any) => {
                     </section>
                     <section
                         className="flex flex-col justify-center  items-center"
-
                     >
                         <PubKey
                             pubKey={pubKey}
@@ -120,7 +140,10 @@ const FormPage = ({ translation }: any) => {
                             translate={translation.pubkeyTranslation}
                         />
                     </section>
-                    <section className="flex flex-col justify-center  items-center" >
+                    <section 
+                        className="flex flex-col justify-center  items-center"
+                     
+                        >
                         <Contact
                             translate={translation.contactTranslation}
                             email={email}
@@ -132,6 +155,7 @@ const FormPage = ({ translation }: any) => {
                     <section>
                         <Button disabled={!!addrType && !!prefixStr && !!pubKey} onClick={() => onsubmit()}>Submit</Button>
                     </section>
+                    
                 </>)}
         </div>
     )

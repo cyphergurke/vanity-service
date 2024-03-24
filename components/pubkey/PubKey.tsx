@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Input } from '../ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { validatePublicKey } from 'unchained-bitcoin';
+import { PubKeyDialog } from './Dialog';
 
 
 type TPubKey = {
@@ -21,7 +22,7 @@ const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
 
   return (
     < >
-      <h2 className='text-white text-2xl'>
+      <h2 className='text-white text-center text-2xl'>
         {translate.pubkeyTitle}
       </h2>
       <div className='mt-10'>
@@ -46,7 +47,7 @@ const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
 
           </CardContent>
           <CardFooter className="flex justify-center">
-
+            <PubKeyDialog />
           </CardFooter>
         </Card>
       </div>

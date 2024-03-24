@@ -58,7 +58,7 @@ const Prefix = ({
   }
 
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <div className='flex flex-col justify-center mt-20 items-center'>
       <h2 className='text-white text-2xl'>
         {translate.prefixTitle}
       </h2>
@@ -83,7 +83,7 @@ const Prefix = ({
                 type='text'
                 maxLength={rules[addrType].maxLength}
                 onChange={(e) => setPrefixStr(e.target.value)}
-                className='text-white text-xl mr-auto w-1/2 '
+                className='text-white text-xl mr-auto 3/4 w-[170px] '
               />
             </div>
             <p className='text-white text-center mt-2'>

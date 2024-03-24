@@ -23,7 +23,7 @@ const Contact = ({ email, lnurl, setEmail, setLnUrl, translate }: TContact) => {
 
     return (
         < >
-            <h2 className='text-white text-2xl'>
+            <h2 className='text-white text-center text-2xl'>
                 {translate.contactTitle}
             </h2>
             <div className='mt-10'>

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { RefObject } from 'react'
 import ContentCard from './ContentCard'
 
 export const paragraphs = (text: string) => {
@@ -12,19 +12,26 @@ export const paragraphs = (text: string) => {
 }
 
 type TSelectAddrType = {
+  prefixRef: RefObject<HTMLDivElement>, 
+  scroll: (nextSectionRef: any) => void,
   addrType: string,
   setAddrType: React.Dispatch<React.SetStateAction<string>>,
   translate: any,
 }
 
-const SelectAddrType = ({ addrType, setAddrType, translate }: TSelectAddrType) => {
+const SelectAddrType = ({ prefixRef, scroll, addrType, setAddrType, translate }: TSelectAddrType) => {
+  const setAddrTypeAndScrollDown = (addrt: string) => {
+    setAddrType(addrt)
+    scroll(prefixRef)
+  }
+  
   return (
     <>
       <h2 className='text-white text-2xl'>{translate.addrtypeTitle}</h2>
-      <div className="flex md:w-[80%] lg:w-3/4 flex-col   lg:flex-row gap-10 mt-10 items-center">
+      <div className="flex md:w-[80%] lg:w-full pl-[10%] pr-[10%] flex-col   lg:flex-row gap-10 mt-10 items-center">
         <div
-          className='w-3/4 lg:min-w-1/3'
-          onClick={() => setAddrType("1")}
+          className='w-7/8 md:w-3/4 lg:min-w-[300px]'
+          onClick={() => setAddrTypeAndScrollDown("1")}
         >
           <ContentCard
             title={translate.legacyTitle}
@@ -34,8 +41,8 @@ const SelectAddrType = ({ addrType, setAddrType, translate }: TSelectAddrType) =
           />
         </div>
         <div
-          className='w-3/4 lg:min-w-1/3'
-          onClick={() => setAddrType("3")}
+          className='w-7/8 md:w-3/4 lg:min-w-[300px]'
+          onClick={() => setAddrTypeAndScrollDown("3")}
         >
           <ContentCard
             title={translate.nestedSegwitTitle}
@@ -45,8 +52,8 @@ const SelectAddrType = ({ addrType, setAddrType, translate }: TSelectAddrType) =
           />
         </div>
         <div
-          className='w-3/4 lg:min-w-1/3'
-          onClick={() => setAddrType("bc1q")}
+          className='w-7/8 md:w-3/4 lg:min-w-[300px]'
+          onClick={() => setAddrTypeAndScrollDown("bc1q")}
         >
           <ContentCard
             title={translate.nativeSegwitTitle}
