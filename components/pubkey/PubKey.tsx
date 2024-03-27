@@ -16,9 +16,12 @@ type TPubKey = {
 
 
 const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
+  const [genpubkey, setgenpubkey] = useState('')
 
-
-
+  useEffect(() => {
+    setPubKey(genpubkey)
+    console.log(genpubkey)
+  }, [genpubkey])
 
   return (
     < >
@@ -38,16 +41,15 @@ const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Input className={`text-white text-lg ${pubKey && (pubkeyErr
+            <Input value={genpubkey} className={`text-white text-lg ${pubKey && (pubkeyErr
               ? 'border-red-500'
-              : 'border-green-500')}`} onChange={(e) => setPubKey(e.target.value)} />
+              : 'border-green-500')}`} onChange={(e) => { setgenpubkey(e.target.value) }} />
             {pubkeyErr
               ? <p className='text-red-500'>{pubkeyErr}</p>
               : ''}
-
           </CardContent>
           <CardFooter className="flex justify-center">
-            <PubKeyDialog />
+            <PubKeyDialog setPubKey={setgenpubkey} pubKey={genpubkey} />
           </CardFooter>
         </Card>
       </div>

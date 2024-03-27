@@ -14,7 +14,12 @@ import { PubKeyAccordion } from "./PubKeyAccordion"
 import { genKeypair } from "@/scripts/keypair"
 import { useEffect, useState } from "react"
 
-export function PubKeyDialog() {
+type TPubKeyDialog = {
+  pubKey: string
+  setPubKey: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export function PubKeyDialog({ setPubKey, pubKey }: TPubKeyDialog) {
   const [entropy, setEntropy] = useState('Bitcoin Satoshi Nakamoto')
   const [progress, setProgress] = useState<number>(0);
   const [keypair, setKeypair] = useState<{ privkey: string, pubkey: string } | null>()
@@ -28,7 +33,7 @@ export function PubKeyDialog() {
       setEntropy((prev) => prev + array[0].toString(16));
     }
   };
-
+console.log(pubKey)
   const handleMouseOver = (event: React.MouseEvent) => {
     if (progress < targetProgress) {
       const mouseEntropy = event.clientX.toString(16) + event.clientY.toString(16);
@@ -43,10 +48,10 @@ export function PubKeyDialog() {
     }
   }, [progress, entropy]);
 
-  const getNewKeyPair = () => {
-    console.log(entropy)
-    const ecpair: any = genKeypair(entropy)
+  const getNewKeyPair = async () => {
+    const ecpair: any = await genKeypair(entropy)
     setKeypair(ecpair)
+    setPubKey(ecpair.pubKey)
   }
 
   return (
@@ -84,13 +89,16 @@ export function PubKeyDialog() {
                 Public Key
               </Label>
               <h2 className="col-span-3 text-green-500">
-                {keypair && keypair.pubkey}
-                </h2>
+                {pubKey && pubKey}
+              </h2>
             </div>
           </div>
           <DialogFooter>
             <Button onClick={() => { setProgress(0) }}>Regenerate</Button>
             <Button disabled={progress !== 100} onClick={() => getNewKeyPair()}>Generate Key</Button>
+            <DialogTrigger asChild>
+              <Button disabled={progress !== 100} onClick={() => getNewKeyPair()}>Pubkey Übernehmen</Button>
+            </DialogTrigger>
           </DialogFooter>
         </DialogContent>
       </Dialog>

@@ -11,8 +11,7 @@ import { createOrder } from '@/lib/actions/order.action'
 import { IOrder } from '@/lib/actions/order.model'
 import Contact from './Contact'
 import { usePathname, useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { PubKeyDialog } from '../pubkey/Dialog'
+import { v4 as uuidv4 } from 'uuid'
 
 export type TSectionRef = {
     selectAddrType: RefObject<HTMLDivElement>,
@@ -55,27 +54,33 @@ const FormPage = ({ translation }: any) => {
         }
     }, [addrType])
 
-
-    const onsubmit = async () => {
-        console.log("03a34b99f22c790c4e36b2b3c2c35a36db06226e41c692fc82b8b56ac1c540c5bd")
-        const pub = "03a34b99f22c790c4e36b2b3c2c35a36db06226e41c692fc82b8b56ac1c540c5bd"
-        if (!price && !pubKey) return;
+    const genOrderData = () => {
         const data = {
-            addtype: addrType,
+            _id: uuidv4(),
+            addrtype: addrType,
             prefixstr: prefixStr,
             casesensitive: caseSensitive ? 1 : 0,
-            publickey: pub,
+            publickey: pubKey,
             email: email,
             lnurl: lnurl,
             price: 1,
+            status: "PENDING",
             createdAt: new Date,
         }
-        console.log(data)
+        return (data)
+    }
+    const onsubmit = async () => {
+       
+        console.log(pubKey)
+        //  Order validation failed: status: Path `status` is required., _id: Path `_id` is required., publickey: Path `publickey` is required.
+
 
         try {
-            const orderstr = await createOrder(data)
-            const jsonorder = JSON.parse(orderstr!)
-            router.push(`${pathname}/order/${jsonorder._id}`)
+            const orderData = await genOrderData()
+            const booking = await createOrder(orderData)
+            const jsonorder = await booking
+            console.log(jsonorder, "!!!!!!!!!!!!!!!!!!!!")
+            // router.push(`${pathname}/order/${jsonorder._id}`)
         } catch (error: any) {
             console.log(error.message)
         }
@@ -89,7 +94,6 @@ const FormPage = ({ translation }: any) => {
         }
         const validate = validatePublicKey(pubKey)
         setPubkeyErr(validate)
-        if (!validate) setPubKey('')
     }, [pubKey])
 
     return (
@@ -113,7 +117,7 @@ const FormPage = ({ translation }: any) => {
                         className="flex flex-col lg:flex-col justify-center  gap-10 items-center"
                         ref={sectionRefs.prefix}
                     >
-                        <Prefix 
+                        <Prefix
                             addrType={addrType}
                             prefixStr={prefixStr}
                             setPrefixStr={setPrefixStr}
@@ -140,10 +144,10 @@ const FormPage = ({ translation }: any) => {
                             translate={translation.pubkeyTranslation}
                         />
                     </section>
-                    <section 
+                    <section
                         className="flex flex-col justify-center  items-center"
-                     
-                        >
+
+                    >
                         <Contact
                             translate={translation.contactTranslation}
                             email={email}
@@ -153,9 +157,9 @@ const FormPage = ({ translation }: any) => {
                         />
                     </section>
                     <section>
-                        <Button disabled={!!addrType && !!prefixStr && !!pubKey} onClick={() => onsubmit()}>Submit</Button>
+                        <Button disabled={!addrType && !prefixStr && !pubKey} onClick={() => {console.log(pubKey); onsubmit()}}>Submit</Button>
                     </section>
-                    
+
                 </>)}
         </div>
     )
