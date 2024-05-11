@@ -95,6 +95,7 @@ export async function calculatePrice(_addresstype: string, praefixLength: number
       switch (_addresstype) {
         case '1':
           praefix_price = 5000;
+          break;
         case '3':
           praefix_price = 2000;
           break;
