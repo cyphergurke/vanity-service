@@ -1,6 +1,7 @@
 {
   "Index": {
-    "title": "Vanity Adressen Generator"
+    "title": "Vanity Adressen Generator",
+    "subtitle": "Vertrauenslos Vanity Adressen generieren"
   },
   "Form": {
     "addrtype-title": "1. Wähle den Adresstyp aus",
@@ -30,7 +31,23 @@
     },
     "pubkey": {
       "title": "3. Eingabe des öffentlichen Schlüssels",
-      "text": "Unkomprimierte sowie comprimierte Public Keys akzeptiert"
+      "text": "Unkomprimierte sowie comprimierte Public Keys akzeptiert",
+      "dialog-btn": "Woher erhalte ich den öffentlichen Schlüssel?",
+      "aboutpubkey-title": "Was ist ein öffentlicher Schlüssel?",
+      "aboutpubkey-text": "Ein öffentlicher Schlüssel ist eine Zahl, die",
+      "chooseWallet-title": "Wähle ein sicheres Bitcoin Wallet",
+      "chooseWallet-text": "um einen öffentlichen Schlüssel zu erhalten ...",
+      "exportpubkey-title": "Öffentlicher Schlüssel exportieren",
+      "exportpubkey-text": "um einen öffentlichen Schlüssel zu erhalten ...",
+      "keypair-generate-btn": "Schlüsselpaar auf eigene Gefahr generieren",
+      "entropy-text": "Bewege die Maus oder wische mit dem Finger über den Bildschirm, um entropy zu generieren.",
+      "security-hint": "Bitte beachten Sie, dass dies nicht die beste Methode ist ein Schlüsselpaar zu erzeugen. Wir speichern nicht den Privaten Schlüssel, Importieren Sie den Privaten Schlüssel in eine Wallet.",
+      "private-key": "Privater Schlüssel - wird nicht gespeichert!",
+      "private-key-copy-description": "Privater Schlüssel kopiert. Bedenke das dies keine sichere Methode ist!",
+      "public-key": "Öffentlicher Schlüssel - wird zur Berechnung gespeichert!",
+      "public-key-copy-description": "Öffentlicher Schlüssel kopiert!",
+      "usepubkey-btn": "Diesen öffentlichen Schlüssel verwenden",
+      "regenerate-btn": "Neu generieren"
     },
     "contact": {
       "title": "4. Email Adresse oder LNURL Eingabe",

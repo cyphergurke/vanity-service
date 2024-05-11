@@ -13,13 +13,13 @@ body {
 }
 
 .bg-blue-gradient {
-  background: rgb(15, 12, 29);
-  background: linear-gradient(163deg, rgb(37, 35, 43) 0%, rgb(30, 32, 51) 19%, rgba(0, 18, 72, 1) 93%);
+  background: rgb(65, 37, 201);
+  background: linear-gradient(163deg, rgba(65, 37, 201, 1) 0%, rgba(14, 61, 130, 1) 19%, rgba(0, 18, 72, 1) 66%);
 }
 
 .bg-dark-blue-gradient {
-  background: rgb(65, 37, 201);
-  background: linear-gradient(163deg, rgba(65, 37, 201, 1) 0%, rgba(14, 61, 130, 1) 19%, rgba(0, 18, 72, 1) 66%);
+  background: rgb(15, 12, 29);
+  background: linear-gradient(163deg, rgb(37, 35, 43) 0%, rgb(30, 32, 51) 19%, rgba(0, 18, 72, 1) 93%);
 }
 
 @layer base {
@@ -96,11 +96,36 @@ body {
   }
 }
 
+
+.spinner {
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-left-color: rgb(255, 153, 0);
+
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* This styles the scrollbar track (the part the scrollbar moves along) */
+.dialog ::-webkit-scrollbar-track {
+  background: transparent !important;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 ::-webkit-scrollbar-track {
   background: #F10000;
-  /* Light grey track background */
-  /* Adds rounded corners to the track */
 }
 
 /* This styles the scrollbar thumb (the part that is draggable) */

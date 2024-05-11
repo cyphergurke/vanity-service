@@ -1,6 +1,7 @@
 {
   "Index": {
-    "title": "Vanity Address Generator"
+    "title": "Vanity Address Generator",
+    "subtitle": "Generate trustless Vanity Addresses"
   },
   "Form": {
     "addrtype-title": "1. Select the address type",
@@ -30,7 +31,23 @@
     },
     "pubkey": {
       "title": "3. Enter the public key",
-      "text": "Uncompressed and compressed public keys accepted"
+      "text": "Uncompressed and compressed public keys accepted",
+      "dialog-btn": "Where to get the public key from?",
+      "aboutpubkey-title": "What is a public key?",
+      "aboutpubkey-text": "A public key is a number that",
+      "chooseWallet-title": "Choose a safe Bitcoin Wallet",
+      "chooseWallet-text": "to get a public key...",
+      "exportpubkey-title": "Export Public Key",
+      "exportpubkey-text": "to get a public key...",
+      "keypair-generate-btn": "Generate a keypair on your own risk",
+      "entropy-text": "Drag the mouse or swipe with the finger over the screen to generate entropy.",
+      "security-hint": "Please note that this is not the best way to generate a key pair. We do not store the private key, import the private key into a wallet.",
+      "private-key": "Private Key - is not saved by us!",
+      "public-key": "Public Key - is saved for calculation!",
+      "private-key-copy-description": "Your Key is copied, be carefulthis this is not the best practice to handle Private Keys.",
+      "public-key-copy-description": "Public Key is copied.",
+      "usepubkey-btn": "Use this Public Key",
+      "regenerate-btn": "Regenerate"
     },
     "contact": {
       "title": "4. Enter Email or LNURL",
