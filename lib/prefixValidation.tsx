@@ -20,10 +20,10 @@ export const rules: any = {
   };
 
 export const validateAddressPrefix = (addrType: string, prefixStr: string, translate: any) => {
-    let disallowedChars = [];
-    let invalidChars = [];
+    const disallowedChars = [];
+    const invalidChars = [];
     const rule = rules[addrType];
-    let errors = [];
+    const errors = [];
     if (addrType === "3" && !/^[2-9A-Q]/.test(prefixStr[0])) {
       errors.push(<p>{translate.disallowedfirstchar}: {prefixStr[0]}</p>)
     }

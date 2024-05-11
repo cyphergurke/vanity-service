@@ -1,7 +1,8 @@
 'use client'
 
 import React, { RefObject } from 'react'
-import ContentCard from './ContentCard'
+
+import AddrTypeCard from '../cards/AddrTypeCard';
 
 export const paragraphs = (text: string) => {
   return text.split('\n').map((line, index) => (
@@ -12,7 +13,7 @@ export const paragraphs = (text: string) => {
 }
 
 type TSelectAddrType = {
-  prefixRef: RefObject<HTMLDivElement>, 
+  prefixRef: RefObject<HTMLDivElement>,
   scroll: (nextSectionRef: any) => void,
   addrType: string,
   setAddrType: React.Dispatch<React.SetStateAction<string>>,
@@ -24,44 +25,44 @@ const SelectAddrType = ({ prefixRef, scroll, addrType, setAddrType, translate }:
     setAddrType(addrt)
     scroll(prefixRef)
   }
-  
+
   return (
     <>
       <h2 className='text-white text-2xl'>{translate.addrtypeTitle}</h2>
-      <div className="flex md:w-[80%] lg:w-full pl-[10%] pr-[10%] flex-col   lg:flex-row gap-10 mt-10 items-center">
-        <div
-          className='w-7/8 md:w-3/4 lg:min-w-[300px]'
+      <div className='flex flex-col w-full lg:flex-row justify-center items-center gap-10 py-10 lg:px-10 '>
+        <button
+          className='w-[80%] md:max-w-[400px] lg:max-w-[400px]  text-left' /* max-w-[300px] */
           onClick={() => setAddrTypeAndScrollDown("1")}
         >
-          <ContentCard
+          <AddrTypeCard
             title={translate.legacyTitle}
             description=""
             content={paragraphs(translate.legacyText)}
-            classNames={`h-[250px] ${addrType === "1" ? 'bg-dark-blue-gradient' : 'bg-blue-gradient'} `}
+            classNames={`h-[250px] w ${addrType === "1" ? 'bg-blue-gradient ' : 'bg-dark-blue-gradient'} `}
           />
-        </div>
-        <div
-          className='w-7/8 md:w-3/4 lg:min-w-[300px]'
+        </button>
+        <button
+          className='w-[80%] md:max-w-[400px] lg:max-w-[400px] text-left'
           onClick={() => setAddrTypeAndScrollDown("3")}
         >
-          <ContentCard
+          <AddrTypeCard
             title={translate.nestedSegwitTitle}
             description=""
             content={paragraphs(translate.nestedSegwitText)}
-             classNames={`h-[250px] ${addrType === "3" ? 'bg-dark-blue-gradient' : 'bg-blue-gradient'} `}
+            classNames={`h-[250px] ${addrType === "3" ? 'bg-blue-gradient ' : 'bg-dark-blue-gradient'} `}
           />
-        </div>
-        <div
-          className='w-7/8 md:w-3/4 lg:min-w-[300px]'
+        </button>
+        <button
+          className='w-[80%] md:max-w-[400px] lg:max-w-[400px] text-left'
           onClick={() => setAddrTypeAndScrollDown("bc1q")}
         >
-          <ContentCard
+          <AddrTypeCard
             title={translate.nativeSegwitTitle}
             description=""
             content={paragraphs(translate.nativeSegwitText)}
-             classNames={`h-[250px] ${addrType === "bc1q" ? 'bg-dark-blue-gradient' : 'bg-blue-gradient'} `}
+            classNames={`h-[250px] ${addrType === "bc1q" ? 'bg-blue-gradient ' : 'bg-dark-blue-gradient'} `}
           />
-        </div>
+        </button>
       </div>
     </>
   )
