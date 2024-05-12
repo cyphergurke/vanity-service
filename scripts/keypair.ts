@@ -10,7 +10,5 @@ export const genKeypair = (entropy: string) => {
     const keypair = ECPair.fromPrivateKey( sha265priv, { compressed: true, network: bitcoin.networks.bitcoin })
     const wifkey = keypair.toWIF()
     const publicKey = keypair.publicKey.toString("hex");
-    console.log(`Private Key (WIF): ${wifkey}`);
-    console.log(`public Key (WIF): ${publicKey}`);
     return {privKey: wifkey, pubKey: publicKey}
 }

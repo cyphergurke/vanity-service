@@ -49,7 +49,9 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
             router.push(`${langpath}/order/paid/${order._id}`)
             return
         }
-        checkPaymentStatus()
+        if (payment && payment.status !== "paid") {
+            checkPaymentStatus()
+        }
     }, [payment])
 
 
@@ -121,7 +123,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
                 </Tabs >
             ) : (
                 <div className="spinner mx-auto my-auto mt-32"></div>
-        )}
+            )}
         </>
     )
 }

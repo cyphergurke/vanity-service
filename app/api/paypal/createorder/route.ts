@@ -6,8 +6,6 @@ import { NextRequest } from 'next/server';
 export async function POST( req: NextRequest) {
   try {
     const data: any = await req.json();
-    console.log(data, data.orderId, data.order_price)
-     
      const PaypalClient = client()
      const request = new paypal.orders.OrdersCreateRequest()
      request.headers['Prefer'] = 'return=representation'

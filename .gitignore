@@ -12,6 +12,7 @@
 # next.js
 /.next/
 /out/
+/computed/*
 
 # production
 /build

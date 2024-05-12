@@ -7,7 +7,7 @@ const PaymentSucceeded = ({ orderstr }: any) => {
     const [progress, setProgress] = useState([])
     const order = JSON.parse(orderstr)
 
-    const parseMetrics = (elements: any) => {
+   /*  const parseMetrics = (elements: any) => {
         const values: any[] = [];
         console.log(elements[0])
 
@@ -15,15 +15,15 @@ const PaymentSucceeded = ({ orderstr }: any) => {
 
         return values;
     };
-
+ */
 
     const checkProgress = async () => {
         const checkProgressInterval = setInterval(async () => {
             const vanityProgress = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/btc/paid/${order._id}`)
             if (vanityProgress.data.status === "COMPUTING" && vanityProgress.data.progress) {
                 setProgress(vanityProgress.data.progress)
-                const newProgressData = parseMetrics(vanityProgress.data.progress)
-                console.log(newProgressData)
+               /*  const newProgressData = parseMetrics(vanityProgress.data.progress)
+                console.log(newProgressData) */
             } else if (vanityProgress.data.status === "COMPLETED") {
                 setProgress([])
                 clearInterval(checkProgressInterval)

@@ -20,7 +20,6 @@ const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
 
   useEffect(() => {
     setPubKey(genpubkey)
-    console.log(genpubkey)
   }, [genpubkey])
 
   return (

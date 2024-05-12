@@ -82,6 +82,9 @@ const FormPage = ({ translation }: any) => {
             const res: any = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/order/create`, orderData)
             if (res.data.created) {
                 router.push(`${pathName}/order/checkout/${id}`)
+                setAddrType('')
+                setPrefixStr('')
+                setPubKey('')
                 setSubmitting(false)
             }
         } catch (error: any) {
@@ -177,14 +180,6 @@ const FormPage = ({ translation }: any) => {
                                     Berechnen
                                 </Button>
                             )}
-                            <Button
-                                className='bg-green-700 transition-all duration-300
-                                        hover:bg-green-600 hover:shadow-white hover:shadow-md active
-                                        focus:border-white focus:border-2   focus:shadow-white focus:shadow-lg '
-                                disabled={!addrType || !prefixStr || !pubKey || !email || pubkeyErr || prefixErr}
-                                onClick={() => onsubmit()}>
-                                Berechnen
-                            </Button>
                         </section>
 
                     </>)}
