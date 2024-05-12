@@ -110,7 +110,7 @@ const PaymentSchema = new Schema({
 
 const OrderSchema = new Schema({
     _id: { type: String, required: true },
-    language: { type: String, required: true },
+    language: { type: String, required: false },
     addrtype: { type: String, required: true },
     prefixstr: { type: String, required: true },
     casesensitive: { type: Number, required: true },
