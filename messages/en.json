@@ -1,6 +1,7 @@
 {
   "Index": {
-    "title": "Vanity Address Generator"
+    "title": "Split Key Vanity Address Generator",
+    "subtitle": "Generate trustless Vanity Addresses"
   },
   "Form": {
     "addrtype-title": "1. Select the address type",
@@ -15,8 +16,9 @@
     "prefix": {
       "title": "2. Select the prefix",
       "subtitle": "What characters should be included in the address?\n (Input without address type)",
-      "disallowed-prefix": "Disallowed character detected in address prefix.",
-      "invalid-prefix": "Invalid characters in address prefix.",
+      "disallowed-prefix": "Disallowed character detected in address prefix",
+      "disallowedfirstchar": "Disallowed first character",
+      "invalid-prefix": "Invalid characters in address prefix",
       "casesensitive": "Case-sensitive"
     },
     "price":{
@@ -29,7 +31,27 @@
     },
     "pubkey": {
       "title": "3. Enter the public key",
-      "text": "Uncompressed and compressed public keys accepted"
+      "text": "Uncompressed and compressed public keys accepted",
+      "dialog-btn": "Where to get the public key from?",
+      "aboutpubkey-title": "What is a public key?",
+      "aboutpubkey-text": "A public key is a long alphanumeric string used in cryptography to receive Bitcoin transactions. It is part of a key pair, where the other part is the private key. The public key can be safely shared with others, while the private key must remain secret to secure ownership of the Bitcoins.",
+      "chooseWallet-title": "Choose a safe Bitcoin Wallet",
+      "chooseWallet-text": "Both Blue Wallet and Electrum Wallet are known for their security, but many users consider Electrum Wallet to be particularly secure and reliable. It is a widely used and well-documented open-source wallet that offers advanced security features.",
+      "exportpubkey-title": "Export Public Key",
+      "exportpubkey-text": "To export the compressed public key in Electrum Wallet, follow these steps:\n 1. Open Electrum and navigate to your wallet.\n 2. Click on \"View\" in the top menu and select \"Show Addresses\".\n 3. Click on the \"Addresses\" button in the header.\n 4. Select one of the addresses and label it, e.g., \"key for vanityaddr\".\n 5. Right-click on this labeled address and select \"Details\".\n The public key (WIF-compressed) will be displayed.\n 6. Copy the public key or scan it as a QR code.\n 7. Paste it into the input field for the Public Key.",
+      "keypair-generate-btn": "Generate a keypair on your own risk",
+      "entropy-text": "Drag the mouse or swipe with the finger over the screen to generate entropy.",
+      "security-hint": "Please note that this is not the best way to generate a key pair. We do not store the private key, import the private key into a wallet.",
+      "private-key": "Private Key - is not saved by us!",
+      "public-key": "Public Key - is saved for calculation!",
+      "private-key-copy-description": "Your Key is copied, be carefulthis this is not the best practice to handle Private Keys.",
+      "public-key-copy-description": "Public Key is copied.",
+      "usepubkey-btn": "Use this Public Key",
+      "regenerate-btn": "Regenerate"
+    },
+    "contact": {
+      "title": "4. Enter Email or LNURL",
+      "text": "For recieving the Vanity Address and the Partial Private Key"
     }
   }
 }

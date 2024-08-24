@@ -1,6 +1,7 @@
 {
   "Index": {
-    "title": "Vanity Adressen Generator"
+    "title": "Split Key Vanity Adressen Generator",
+    "subtitle": "Vertrauenslos Vanity Adressen generieren"
   },
   "Form": {
     "addrtype-title": "1. Wähle den Adresstyp aus",
@@ -16,6 +17,7 @@
       "title": "2. Wähle den Präfix aus",
       "subtitle": "Welche Zeichen sollen in der Adresse enthalten sein? \n (Eingabe ohne Adresstyp)",
       "disallowed-prefix": "Präfix enthält nicht Erlaubtes Zeichen.",
+      "disallowedfirstchar": "Nicht erlaubtes Zeichen an erster Stelle",
       "invalid-prefix": "Fehlerhaftes Zeichen im Adress-Präfix",
       "casesensitive": "Groß- und Kleinschreibung beachten"
     },
@@ -23,14 +25,33 @@
       "price": "Preis",
       "addr-type": "Adress Typ",
       "prefix-lenght": "Präfixlänge",
-      "price-title": "Preis Berechnung",
+      "price-title": "Preisberechnung",
       "yes": "Ja",
       "no": "Nein"
     },
     "pubkey": {
       "title": "3. Eingabe des öffentlichen Schlüssels",
-      "text": "Unkomprimierte sowie comprimierte Public Keys akzeptiert"
- 
+      "text": "Unkomprimierte sowie comprimierte Public Keys akzeptiert",
+      "dialog-btn": "Woher erhalte ich den öffentlichen Schlüssel?",
+      "aboutpubkey-title": "Was ist ein öffentlicher Schlüssel?",
+      "aboutpubkey-text": "Ein öffentlicher Schlüssel ist eine lange alphanumerische Zeichenfolge, die im Rahmen der Kryptografie verwendet wird, um Bitcoin-Transaktionen zu empfangen. Er ist ein Teil eines Schlüsselpaares, bei dem der andere Teil der private Schlüssel ist. Der öffentliche Schlüssel kann sicher mit anderen geteilt werden, während der private Schlüssel geheim bleiben muss, um das Eigentum an den Bitcoins zu sichern.",
+      "chooseWallet-title": "Wähle ein sicheres Bitcoin Wallet",
+      "chooseWallet-text": "Sowohl Blue Wallet als auch Electrum Wallet sind als sicher bekannt, aber für viele Nutzer gilt Electrum Wallet als besonders sicher und vertrauenswürdig. Es ist eine weit verbreitete und gut dokumentierte Open-Source-Wallet, die erweiterte Sicherheitsfunktionen bietet.",
+      "exportpubkey-title": "Wie exportiere ich den Öffentlichen Schlüssel?",
+      "exportpubkey-text": "Um den komprimierten öffentlichen Schlüssel in Electrum Wallet zu exportieren, folge diesen Schritten:\n 1. Öffne Electrum und gehe zu deinem Wallet.\n 2. Klicke auf \"Ansicht\" im oberen Menü und wähle \"Adressen anzeigen\".\n 3. Klicke auf den Button \"Adressen\" in der Kopfzeile.\n 4. Wähle eine der Adressen aus und beschrifte sie, z.B. \"Schlüssel für vanityaddr\".\n 5. Klicke mit der rechten Maustaste auf diese beschriftete Adresse und wähle \"Details\".\n Es wird der öffentliche Schlüssel (WIF-komprimiert) angezeigt.\n 6. Kopiere den öffentlichen Schlüssel oder scanne ihn als QR-Code.\n 7. Füge ihn in das Eingabefeld für den Öffentlichen Schlüssel ein. ",
+      "keypair-generate-btn": "Schlüsselpaar auf eigene Gefahr generieren",
+      "entropy-text": "Bewege die Maus oder wische mit dem Finger über den Bildschirm, um entropy zu generieren.",
+      "security-hint": "Bitte beachten Sie, dass dies nicht die beste Methode ist ein Schlüsselpaar zu erzeugen. Wir speichern nicht den Privaten Schlüssel, Importieren Sie den Privaten Schlüssel in eine Wallet.",
+      "private-key": "Privater Schlüssel - wird nicht gespeichert!",
+      "private-key-copy-description": "Privater Schlüssel kopiert. Bedenke das dies keine sichere Methode ist!",
+      "public-key": "Öffentlicher Schlüssel - wird zur Berechnung gespeichert!",
+      "public-key-copy-description": "Öffentlicher Schlüssel kopiert!",
+      "usepubkey-btn": "Diesen öffentlichen Schlüssel verwenden",
+      "regenerate-btn": "Neu generieren"
+    },
+    "contact": {
+      "title": "4. Email Adresse oder LNURL Eingabe",
+      "text": "Zum Empfangen der Vanity Adresse und des Partial Private Key"
     }
   }
 }

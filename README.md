@@ -1,6 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 ## Getting Started
+
+
+pm2 start npm --name "vanity-service" -- start
+
 
 First, run the development server:
 
