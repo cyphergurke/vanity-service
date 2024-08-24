@@ -66,7 +66,6 @@ export function PubKeyDialog({ translate, setPubKey }: TPubKeyDialog) {
   const getNewKeyPair = async () => {
     const ecpair: any = await genKeypair(entropy)
     setKeypair(ecpair)
-    setPubKey(ecpair.pubKey)
     const pubKeyQR = await QRCode.toDataURL(ecpair.pubKey)
     const privKeyQR = await QRCode.toDataURL(ecpair.privKey)
     setQRCodeURLs({ privKeyQR: privKeyQR, pubKeyQR: pubKeyQR })
@@ -150,7 +149,7 @@ export function PubKeyDialog({ translate, setPubKey }: TPubKeyDialog) {
                   </p>
                 </div>
               ) : (
-                  <Progress translate={translate} progress={progress} targetProgress={targetProgress} />
+                <Progress translate={translate} progress={progress} targetProgress={targetProgress} />
               )}
             </>
           )}
@@ -161,7 +160,18 @@ export function PubKeyDialog({ translate, setPubKey }: TPubKeyDialog) {
                   className="m-2"
                   onClick={() => { setProgress(0); setKeypair(null) }}>{translate.pubkeyRegenerate}</Button>
                 <DialogTrigger asChild>
-                  <Button className="m-2" disabled={progress !== 100} >{translate.pubkeyTakethisPubKeyBTN}</Button>
+                  <Button
+                    className="m-2"
+                    disabled={progress !== 100}
+                    onClick={() => setPubKey(keypair.pubKey)}
+                  >
+                    {translate.pubkeyTakethisPubKeyBTN}
+                  </Button>
+                </DialogTrigger>
+                <DialogTrigger asChild>
+                  <Button className="m-2">
+                    Okay
+                  </Button>
                 </DialogTrigger>
               </>
             ) : (
@@ -178,7 +188,7 @@ export function PubKeyDialog({ translate, setPubKey }: TPubKeyDialog) {
             )}
           </DialogFooter>
         </div>
-      </DialogContent>
-    </Dialog>
+      </DialogContent >
+    </Dialog >
   )
 }

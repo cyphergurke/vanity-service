@@ -1,11 +1,14 @@
 "use client"
 
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const PaymentSucceeded = ({ orderstr }: any) => {
     const [progress, setProgress] = useState([])
-    const order = JSON.parse(orderstr)
+    const [order, setOrder] = useState(JSON.parse(orderstr))
+
+    const router = useRouter()
 
    /*  const parseMetrics = (elements: any) => {
         const values: any[] = [];
@@ -24,6 +27,7 @@ const PaymentSucceeded = ({ orderstr }: any) => {
                 setProgress(vanityProgress.data.progress)
                /*  const newProgressData = parseMetrics(vanityProgress.data.progress)
                 console.log(newProgressData) */
+                setOrder(vanityProgress.data.order)
             } else if (vanityProgress.data.status === "COMPLETED") {
                 setProgress([])
                 clearInterval(checkProgressInterval)
@@ -34,6 +38,13 @@ const PaymentSucceeded = ({ orderstr }: any) => {
     useEffect(() => {
         checkProgress()
     }, [])
+
+    useEffect(() => {
+        if (order.vanityAddr && order.partialPriv) {
+            router.push(`https://vanity-split-key-merge.bitcoin-uni.de/${order.vanityAddr}/${order.partialPriv}`)
+        }
+    }, [order])
+    
 
     return (
         <div className=' w-[90%] md:w-2/3 lg:w-1/3 bg-blue-gradient text-white p-4 rounded-lg shadow-lg shadow-black' >

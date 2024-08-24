@@ -2,7 +2,7 @@ import React from 'react'
 import { NavBarMenu } from './NavBarMenu'
 import Image from 'next/image'
 
-import logo from '../../public/cyphrkey.jpg'
+import logo from '../../public/favicon/android-chrome-192x192.png'
 import { Button } from '../ui/button'
 import { MobileNavBar } from './MobileNavBar'
 import { Link } from '@/navigation'

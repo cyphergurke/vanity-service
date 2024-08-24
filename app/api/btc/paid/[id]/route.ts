@@ -15,7 +15,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
         const order = await getOrder()
 
         if (order.status !== "PENDING" || order.payment?.opennode?.status === "paid") {
-            return Response.json({ status: order.status, chargeInfo: { status: "paid" }, progress: order.progress });
+            return Response.json({ status: order.status, chargeInfo: { status: "paid" }, progress: order.progress, order: order });
         } else if(order.payment) {
             const options = {
                 method: 'GET',
