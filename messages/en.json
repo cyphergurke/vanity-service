@@ -1,6 +1,6 @@
 {
   "Index": {
-    "title": "Vanity Address Generator",
+    "title": "Split Key Vanity Address Generator",
     "subtitle": "Generate trustless Vanity Addresses"
   },
   "Form": {
@@ -34,11 +34,11 @@
       "text": "Uncompressed and compressed public keys accepted",
       "dialog-btn": "Where to get the public key from?",
       "aboutpubkey-title": "What is a public key?",
-      "aboutpubkey-text": "A public key is a number that",
+      "aboutpubkey-text": "A public key is a long alphanumeric string used in cryptography to receive Bitcoin transactions. It is part of a key pair, where the other part is the private key. The public key can be safely shared with others, while the private key must remain secret to secure ownership of the Bitcoins.",
       "chooseWallet-title": "Choose a safe Bitcoin Wallet",
-      "chooseWallet-text": "to get a public key...",
+      "chooseWallet-text": "Both Blue Wallet and Electrum Wallet are known for their security, but many users consider Electrum Wallet to be particularly secure and reliable. It is a widely used and well-documented open-source wallet that offers advanced security features.",
       "exportpubkey-title": "Export Public Key",
-      "exportpubkey-text": "to get a public key...",
+      "exportpubkey-text": "To export the compressed public key in Electrum Wallet, follow these steps:\n 1. Open Electrum and navigate to your wallet.\n 2. Click on \"View\" in the top menu and select \"Show Addresses\".\n 3. Click on the \"Addresses\" button in the header.\n 4. Select one of the addresses and label it, e.g., \"key for vanityaddr\".\n 5. Right-click on this labeled address and select \"Details\".\n The public key (WIF-compressed) will be displayed.\n 6. Copy the public key or scan it as a QR code.\n 7. Paste it into the input field for the Public Key.",
       "keypair-generate-btn": "Generate a keypair on your own risk",
       "entropy-text": "Drag the mouse or swipe with the finger over the screen to generate entropy.",
       "security-hint": "Please note that this is not the best way to generate a key pair. We do not store the private key, import the private key into a wallet.",
