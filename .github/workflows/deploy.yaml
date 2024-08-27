@@ -71,7 +71,7 @@ jobs:
             echo "NEXT_PUBLIC_PAYPAL_CLIENT_ID=${{ secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}" >> .env.local
             echo "PAYPAL_SECRET=${{ secrets.PAYPAL_SECRET}}" >> .env.local
             echo "PAYPAL_SANDBOXURL=${{ secrets.PAYPAL_SANDBOXURL}}" >> .env.local
-            echo "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" > .env.local
+            echo "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" >> .env.local
             echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> .env.local
             echo "IMAP_MAIL_SERVER_OUT=${{ secrets.IMAP_MAIL_SERVER_OUT }}" >> .env.local
             echo "IMAP_MAIL_SERVER_PORT_OUT=${{ secrets.IMAP_MAIL_SERVER_PORT_OUT }}" >> .env.local
