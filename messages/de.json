@@ -21,7 +21,7 @@
       "invalid-prefix": "Fehlerhaftes Zeichen im Adress-Präfix",
       "casesensitive": "Groß- und Kleinschreibung beachten"
     },
-    "price":{
+    "price": {
       "price": "Preis",
       "addr-type": "Adress Typ",
       "prefix-lenght": "Präfixlänge",
@@ -53,5 +53,37 @@
       "title": "4. Email Adresse oder LNURL Eingabe",
       "text": "Zum Empfangen der Vanity Adresse und des Partial Private Key"
     }
+  },
+  "Contact": {
+    "title": "Kontakt",
+    "subTitle": "Senden Sie mir eine Anfrage oder rufen Sie mich an unter: ",
+    "name": {
+      "label": "Name",
+      "placeholder": "Ihr Name",
+      "errorMessage": "Name ist erforderlich"
+    },
+    "email": {
+      "label": "Email Adresse",
+      "placeholder": "ihre.email@adresse.de",
+      "errorMessage": "Email ist erforderlich",
+      "invalidEmail": "Ungültige Email Adresse"
+    },
+    "subject": {
+      "label": "Betreff",
+      "placeholder": "Betreff (Optional)"
+    },
+    "message": {
+      "label": "Nachricht",
+      "placeholder": "Ihre Nachricht",
+      "errorMessage": "Die Nachricht ist erforderlich"
+    },
+    "agreeToTerms": {
+      "label": "Ich akzeptiere die Datenschutzverordnung",
+      "errorMessage": "Sie müssen der Datenschutzverordnung zustimmen"
+    },
+    "button": "Senden",
+    "successMessage": "Email erfolgreich gesendet!",
+    "failedMessage": "Fehler beim versenden.",
+    "errorMessage": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
   }
 }

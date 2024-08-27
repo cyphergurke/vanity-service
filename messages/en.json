@@ -21,7 +21,7 @@
       "invalid-prefix": "Invalid characters in address prefix",
       "casesensitive": "Case-sensitive"
     },
-    "price":{
+    "price": {
       "price": "Price",
       "addr-type": "Address type",
       "prefix-lenght": "Prefixlength",
@@ -53,5 +53,37 @@
       "title": "4. Enter Email or LNURL",
       "text": "For recieving the Vanity Address and the Partial Private Key"
     }
+  },
+  "Contact": {
+    "title": "Contact",
+    "subTitle": "Send me a Project request or call me: ",
+    "name": {
+      "label": "Name",
+      "placeholder": "Your Name",
+      "errorMessage": "Name is required"
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "your.email@address.com",
+      "errorMessage": "Email is required",
+      "invalidEmail": "Invalid email address"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "Subject (optional)"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Your Message",
+      "errorMessage": "Message is required"
+    },
+    "agreeToTerms": {
+      "label": "I agree to the terms and conditions",
+      "errorMessage": "You must agree to the terms and conditions"
+    },
+    "button": "Send",
+    "successMessage": "Email sent successfully!",
+    "failedMessage": "Failed to send email.",
+    "errorMessage": "An error occurred. Please try again later."
   }
 }
