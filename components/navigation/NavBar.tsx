@@ -1,15 +1,30 @@
+"use client"
+
 import React from 'react'
-import { NavBarMenu } from './NavBarMenu'
 import Image from 'next/image'
 
 import logo from '../../public/favicon/android-chrome-192x192.png'
-import { Button } from '../ui/button'
 import { MobileNavBar } from './MobileNavBar'
 import { Link } from '@/navigation'
+import LanguageToggle from './LanguageToggle'
+import { useLocale, useTranslations } from 'next-intl'
+import { navItems } from '@/data'
 
 
 
 const NavBar = () => {
+    const locale = useLocale()
+
+    const h = useTranslations('Navigation');
+    const translate = {
+        home: h('home'),
+        about: h('about'),
+        contact: h('contact'),
+        faq: h('faq'),
+        guide: h('guide'),
+    };
+    const translatedNavItems = navItems(translate)
+
     return (
         <div className='flex flex-row h-20 items-center justify-between w-full '>
             <Link href="/" aria-label='Home - Bitcoin Uni Vanity Service'>
@@ -23,18 +38,24 @@ const NavBar = () => {
                     <p className=' hidden lg:block font-semibold text-xl text-white'>Bitcoin Uni - Vanity Service</p>
                 </div>
             </Link>
-            <div className=' hidden md:block mr-[7%]'>
-                <NavBarMenu />
+            <div className=' hidden md:block mx-auto text-center'>
+                <div className='flex flex-row gap-5'>
+                    {translatedNavItems.map((navItem: any, idx: number) => (
+                        <Link
+                            key={`link=${idx}`}
+                            href={`/${navItem.link}`}
+                            className="relative flex items-center"
+                        >
+                            <span className="block sm:hidden">{navItem.icon}</span>
+                            <span className="text-white text-lg cursor-pointer transition-all duration-300 hover:text-violet-200">
+                                {navItem.name}
+                            </span>
+                        </Link>
+                    ))}
+                </div>
             </div>
-            <div className='gap-4'>
-                <Link className='text-white font-semibold pl-2' href="/" locale="en" >English</Link>
-
-                <Link className='text-white font-semibold pl-2' href="/" locale="de" >Deutsch</Link>
-            </div>
-            <div className='mr-10 hidden md:block'>
-                <Button className='' variant="default">
-                    Login
-                </Button>
+            <div className='gap-4 mr-14 hidden md:lg:block text-white'>
+                <LanguageToggle />
             </div>
             <div className='mr-4   md:hidden'>
                 <MobileNavBar />

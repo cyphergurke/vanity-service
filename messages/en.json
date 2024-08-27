@@ -3,6 +3,13 @@
     "title": "Split Key Vanity Address Generator",
     "subtitle": "Generate trustless Vanity Addresses"
   },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "guide": "Guide"
+  },
   "Form": {
     "addrtype-title": "1. Select the address type",
     "addrTypeSelection": {

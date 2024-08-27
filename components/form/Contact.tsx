@@ -89,8 +89,8 @@ export function ContactForm() {
   };
 
   return (
-    <section className="w-full py-10" id="contact">
-      <h2 className="heading pb-20">
+    <section className="w-full pb-20 lg:py-10" id="contact">
+      <h2 className="text-4xl text-white text-center pt-20 pb-20">
         {translate.title} <span className="text-purple"></span>
       </h2>
       <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black-100">

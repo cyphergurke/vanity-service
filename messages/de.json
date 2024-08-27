@@ -3,6 +3,14 @@
     "title": "Split Key Vanity Adressen Generator",
     "subtitle": "Vertrauenslos Vanity Adressen generieren"
   },
+  "Navigation": {
+    "home": "Home",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "legal": "Legal",
+    "faq": "FAQ",
+    "guide": "Anleitung"
+  },
   "Form": {
     "addrtype-title": "1. Wähle den Adresstyp aus",
     "addrTypeSelection": {
