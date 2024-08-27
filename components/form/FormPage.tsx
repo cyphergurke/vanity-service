@@ -2,7 +2,6 @@
 
 import React, { RefObject, useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { validatePublicKey } from 'unchained-bitcoin'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Button } from '../ui/button'
@@ -12,6 +11,7 @@ import PriceCalculation from '../cards/PriceCalculation'
 import Prefix from '../cards/Prefix'
 import SelectAddrType from './SelectAddrType'
 import axios from 'axios'
+import { isValidBitcoinPublicKey } from '@/scripts/keypair'
 
 export type TSectionRef = {
     selectAddrType: RefObject<HTMLDivElement>,
@@ -26,7 +26,7 @@ const FormPage = ({ translation }: any) => {
     const [prefixErr, setPrefixErr] = useState<any | null>(null)
     const [caseSensitive, setCaseSensitive] = useState(true)
     const [pubKey, setPubKey] = useState('')
-    const [pubkeyErr, setPubkeyErr] = useState('')
+    const [pubkeyErr, setPubkeyErr] = useState<string | null>(null)
     const [email, setEmail] = useState('')
     const [lnurl, setLnUrl] = useState('')
     const [submitting, setSubmitting] = useState(false)
@@ -97,7 +97,7 @@ const FormPage = ({ translation }: any) => {
             setPubkeyErr('')
             return
         }
-        const validate = validatePublicKey(pubKey)
+        const validate = isValidBitcoinPublicKey(pubKey)
         setPubkeyErr(validate)
     }, [pubKey])
 
