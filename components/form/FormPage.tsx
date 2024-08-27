@@ -11,7 +11,7 @@ import PriceCalculation from '../cards/PriceCalculation'
 import Prefix from '../cards/Prefix'
 import SelectAddrType from './SelectAddrType'
 import axios from 'axios'
-import { isValidBitcoinPublicKey } from '@/scripts/keypair'
+import { isValidBitcoinPublicKey } from '@/lib/keypair'
 
 export type TSectionRef = {
     selectAddrType: RefObject<HTMLDivElement>,

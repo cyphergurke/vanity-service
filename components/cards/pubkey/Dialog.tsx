@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
 import { PubKeyAccordion } from "./PubKeyAccordion"
-import { genKeypair } from "@/scripts/keypair"
+import { genKeypair } from "@/lib/keypair"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
 

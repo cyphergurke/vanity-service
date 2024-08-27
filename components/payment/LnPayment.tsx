@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from "next/image"
 import QRCode from "qrcode"
-import { calculateRestTime } from '@/scripts/convertTimestamp'
+import { calculateRestTime } from '@/lib/convertTimestamp'
 import { Button } from '../ui/button'
 
 const LnPayment = ({ invoice }: any) => {
@@ -34,11 +34,11 @@ const LnPayment = ({ invoice }: any) => {
 
     const copyText = async (text: string) => {
         try {
-          navigator.clipboard.writeText(text);
+            navigator.clipboard.writeText(text);
         } catch (err: any) {
-          alert(`Failed to copy text: ${err.message}`);
+            alert(`Failed to copy text: ${err.message}`);
         }
-      };
+    };
 
     return (
         <div className='flex flex-col text-center justify-center items-center'>
