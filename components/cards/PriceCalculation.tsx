@@ -36,8 +36,7 @@ const PriceCalculation = ({ translate, addrType, prefixLen, caseSensitive, setPr
                 </div>
                 <div className='flex justify-between gap-10'>
                     <p>{translate.prefixCasesensitive}:</p>
-                    <p>{caseSensitive ? translate.yes : translate.no}</p>
-
+                    <p className='w-7 text-right'>{caseSensitive ? translate.yes : translate.no}</p>
                 </div>
             </div>
             <hr></hr>
