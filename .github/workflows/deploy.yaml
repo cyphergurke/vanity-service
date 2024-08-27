@@ -71,7 +71,7 @@ jobs:
             echo "PAYPAL_SANDBOXURL=${{ secrets.PAYPAL_SANDBOXURL}}" > .env.local
             pnpm install
             pnpm run build
-            pm2 reload vanityweb --update-env
+            pm2 reload vanity-service --update-env
           EOF
 
 
