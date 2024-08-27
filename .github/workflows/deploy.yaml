@@ -47,40 +47,44 @@ jobs:
           NEXT_PUBLIC_PAYPAL_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}
           PAYPAL_SECRET: ${{ secrets.PAYPAL_SECRET}}
           PAYPAL_SANDBOXURL: ${{ secrets.PAYPAL_SANDBOXURL}}
-
-        #  EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
-        #  EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        #  IMAP_MAIL_SERVER_OUT: ${{ secrets.IMAP_MAIL_SERVER_OUT }}
-        #  IMAP_MAIL_SERVER_PORT_OUT: ${{ secrets.IMAP_MAIL_SERVER_PORT_OUT }}
-        #  NAME: ${{ secrets.NAME }}
-        #  ADDR_STREET: ${{ secrets.ADDR_STREET }}
-        #  ADDR_ZIP_AND_CITY: ${{ secrets.ADDR_ZIP_AND_CITY }}
-        #  PHONE_NUMBER: ${{ secrets.PHONE_NUMBER }}
-        #  UST_NR: ${{ secrets.UST_NR }}
+          DOMAIN: ${{ secrets.DOMAIN }}
+          OWNER_NAME: ${{ secrets.OWNER_NAME }}
+          COMPANY_NAME: ${{ secrets.COMPANY_NAME }}
+          POSTFACH: ${{ secrets.POSTFACH }}
+          ADDR_STREET: ${{ secrets.ADDR_STREET }}
+          ADDR_ZIP_AND_CITY: ${{ secrets.ADDR_ZIP_AND_CITY }}
+          PHONE_NUMBER: ${{ secrets.PHONE_NUMBER }}
+          UST_NR: ${{ secrets.UST_NR }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          IMAP_MAIL_SERVER_OUT: ${{ secrets.IMAP_MAIL_SERVER_OUT }}
+          IMAP_MAIL_SERVER_PORT_OUT: ${{ secrets.IMAP_MAIL_SERVER_PORT_OUT }}       
         run: |
           ssh -o StrictHostKeyChecking=no vegeta@${{ secrets.VEGETA_SERVER_IP }} << 'EOF'
             cd ~/vanity2/vanity-service
             git pull origin main
             echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL}}" > .env.local
-            echo "MONGODB_URL=${{ secrets.MONGODB_URL}}" > .env.local
-            echo "LNBITS_APIKEY=${{ secrets.LNBITS_APIKEY}}" > .env.local
-            echo "OPENNODE_KEY=${{ secrets.OPENNODE_KEY}}" > .env.local
-            echo "PAYPAL_ENV=${{ secrets.PAYPAL_ENV}}" > .env.local
-            echo "NEXT_PUBLIC_PAYPAL_CLIENT_ID=${{ secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}" > .env.local
-            echo "PAYPAL_SECRET=${{ secrets.PAYPAL_SECRET}}" > .env.local
-            echo "PAYPAL_SANDBOXURL=${{ secrets.PAYPAL_SANDBOXURL}}" > .env.local
+            echo "MONGODB_URL=${{ secrets.MONGODB_URL}}" >> .env.local
+            echo "LNBITS_APIKEY=${{ secrets.LNBITS_APIKEY}}" >> .env.local
+            echo "OPENNODE_KEY=${{ secrets.OPENNODE_KEY}}" >> .env.local
+            echo "PAYPAL_ENV=${{ secrets.PAYPAL_ENV}}" >> .env.local
+            echo "NEXT_PUBLIC_PAYPAL_CLIENT_ID=${{ secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}" >> .env.local
+            echo "PAYPAL_SECRET=${{ secrets.PAYPAL_SECRET}}" >> .env.local
+            echo "PAYPAL_SANDBOXURL=${{ secrets.PAYPAL_SANDBOXURL}}" >> .env.local
+            echo "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" > .env.local
+            echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> .env.local
+            echo "IMAP_MAIL_SERVER_OUT=${{ secrets.IMAP_MAIL_SERVER_OUT }}" >> .env.local
+            echo "IMAP_MAIL_SERVER_PORT_OUT=${{ secrets.IMAP_MAIL_SERVER_PORT_OUT }}" >> .env.local
+            echo "COMPANY_NAME=${{ secrets.COMPANY_NAME }}" >> .env.local
+            echo "DOMAIN=${{ secrets.DOMAIN }}" >> .env.local
+            echo "OWNER_NAME=${{ secrets.OWNER_NAME }}" >> .env.local
+            echo "POSTFACH=${{ secrets.POSTFACH }}" >> .env.local
+            echo "ADDR_STREET=${{ secrets.ADDR_STREET }}" >> .env.local
+            echo "ADDR_ZIP_AND_CITY=${{ secrets.ADDR_ZIP_AND_CITY }}" >> .env.local
+            echo "PHONE_NUMBER=${{ secrets.PHONE_NUMBER }}" >> .env.local
+            echo "UST_NR=${{ secrets.UST_NR }}" >> .env.local
             pnpm install
             pnpm run build
             pm2 reload vanity-service --update-env
           EOF
 
-
-  # echo "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" > .env.local
-  # echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> .env.local
-  # echo "IMAP_MAIL_SERVER_OUT=${{ secrets.IMAP_MAIL_SERVER_OUT }}" >> .env.local
-  # echo "IMAP_MAIL_SERVER_PORT_OUT=${{ secrets.IMAP_MAIL_SERVER_PORT_OUT }}" >> .env.local
-  # echo "NAME=${{ secrets.NAME }}" >> .env.local
-  # echo "ADDR_STREET=${{ secrets.ADDR_STREET }}" >> .env.local
-  # echo "ADDR_ZIP_AND_CITY=${{ secrets.ADDR_ZIP_AND_CITY }}" >> .env.local
-  # echo "PHONE_NUMBER=${{ secrets.PHONE_NUMBER }}" >> .env.local
-  # echo "UST_NR=${{ secrets.UST_NR }}" >> .env.local
