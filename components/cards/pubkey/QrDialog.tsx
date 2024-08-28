@@ -32,7 +32,7 @@ const QrDialog = ({ setgenpubkey }: TQrDialog) => {
                     <QrReader
                         className=' max-w-screen w-[340px] lg:w-[400px]'
                         constraints={{ facingMode: "environment" }}
-                        scanDelay={300}
+                        scanDelay={30}
                         onResult={(result: any) => handleScan(result)}
                     />
                     <DialogClose asChild >
