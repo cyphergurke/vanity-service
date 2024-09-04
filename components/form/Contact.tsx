@@ -98,9 +98,7 @@ export function ContactForm() {
           {translate.title}
         </h2>
         <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-          {translate.subTitle}<Link href="tel:+491715186152" className="mt-5 text-violet-500">
-            +49 171 5186152
-          </Link>
+          {translate.subTitle}
         </p>
 
         <form className="my-8" onSubmit={handleSubmit(onSubmit)}>
