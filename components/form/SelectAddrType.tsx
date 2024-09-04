@@ -3,14 +3,9 @@
 import React, { RefObject } from 'react'
 
 import AddrTypeCard from '../cards/AddrTypeCard';
+import { paragraphs } from '@/lib/formatText';
 
-export const paragraphs = (text: string) => {
-  return text.split('\n').map((line, index) => (
-    <p className="text-white" key={index}>
-      {line}
-    </p>
-  ));
-}
+
 
 type TSelectAddrType = {
   prefixRef: RefObject<HTMLDivElement>,

@@ -40,8 +40,8 @@ const Footer = () => {
               </Link>
               <div className='flex flex-col'>
                 <p className='text-lg text-white'>Links</p>
-                <Link href='https://bitcoin-uni.de' className='text-violet-300  text-lg transition-all duration-300 hover:text-violet-200' >Bitcoin Uni</Link>
-                <Link href='https://cypherweb.dev' className='text-violet-300  text-lg transition-all duration-300 hover:text-violet-200' >Cypherweb Development</Link>
+                <Link href='https://bitcoin-uni.de' className='text-violet-300  text-md transition-all duration-300 hover:text-violet-200' >Bitcoin Uni</Link>
+                <Link href='https://cypherweb.dev' className='text-violet-300  text-md transition-all duration-300 hover:text-violet-200' >Cypherweb Development</Link>
               </div>
 
             </div>
@@ -54,7 +54,7 @@ const Footer = () => {
                     className="relative flex items-center"
                   >
                     <span className="block sm:hidden">{navItem.icon}</span>
-                    <span className="text-violet-300 text-lg cursor-pointer transition-all duration-300 hover:text-violet-200">
+                    <span className="text-violet-300 text-md cursor-pointer transition-all duration-300 hover:text-violet-200">
                       {navItem.name}
                     </span>
                   </Link>
@@ -62,13 +62,13 @@ const Footer = () => {
               </div>
 
               <div className='flex flex-col '>
-                <Link href={`/${locale}/legal`} className='text-violet-300 text-lg hover:text-violet-200'>
+                <Link href={`/${locale}/legal`} className='text-violet-300 text-md hover:text-violet-200'>
                   Legal
                 </Link>
-                <Link href={`/${locale}/legal/dsgvo`} className='text-violet-300 text-lg transition-all duration-300 hover:text-violet-200'>
+                <Link href={`/${locale}/legal/dsgvo`} className='text-violet-300 text-md transition-all duration-300 hover:text-violet-200'>
                   {locale === 'en' ? 'Privacy Policy' : 'Datenschutzvorordnung'}
                 </Link>
-                <Link href={`/${locale}/legal/agb`} className='text-violet-300 text-lg transition-all duration-300 hover:text-violet-200'>
+                <Link href={`/${locale}/legal/agb`} className='text-violet-300 text-md transition-all duration-300 hover:text-violet-200'>
                   {locale === 'en' ? 'Terms and Conditions' : 'AGB - Allgemeine Geschäftsbedingungen '}
                 </Link>
               </div>
