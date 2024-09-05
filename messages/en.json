@@ -119,5 +119,8 @@
       "title": "How to import the Vanity Address / final private key into a wallet?",
       "text": "In general, any wallet that has an import function for WIF-compressed (Wallet Import Format) keys can be used. \n It may be that your chosen wallet does not show the vanity address but another address format of this private key! \n \n Import the final private key into the Electrum wallet: \n Open Electrum, click on \"Wallet\" -> \"Private Key\" -> \"Import\" \n To import a specific address type (from the final key), write the following before the final key: \n p2pkh:KxZcY47uGp9a... -> 1BTCgQM... \n p2wpkh-p2sh:LxZcY47uGp9a... -> 3MiauXF... \n p2wpkh:KxZcY47uGp9a... -> bc1qcryptqueen3fjfk... \n \n \n \n For Android, I recommend the Mycelium or Bluewallet app. \n \n In the Mycelium wallet, go to the account overview and click on the key symbol with the plus sign at the top right. On the next page, you can import the final key from a QR code or from the cache. \n Navigate to the account of the imported final private key, tap on the address's QR code to switch between the three formats P2SH, legacy & bech32. \n \n Bluewallet displays the legacy address by default when importing the WIF key, but if there is money on the p2sh or bech32 address, it will display the corresponding address. \n \n Open Bluewallet, tap the plus sign in the top right corner, tap \"import wallet,\" paste the final private key, and press \"import\"."
     }
+  },
+  "Guide": {
+    "title": "Instructions for Ordering and Using Vanity Addresses"
   }
 }
