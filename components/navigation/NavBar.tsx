@@ -18,7 +18,6 @@ const NavBar = () => {
     const h = useTranslations('Navigation');
     const translate = {
         home: h('home'),
-        about: h('about'),
         contact: h('contact'),
         faq: h('faq'),
         guide: h('guide'),

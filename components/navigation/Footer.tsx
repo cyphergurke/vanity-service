@@ -14,8 +14,9 @@ const Footer = () => {
   const h = useTranslations('Navigation');
   const translate = {
     home: h('home'),
-    about: h('about'),
     contact: h('contact'),
+    faq: h('faq'),
+    guide: h('guide'),
   };
   const translatedNavItems = navItems(translate)
 
