@@ -64,8 +64,8 @@ const Paypal = ({ order }: any) => {
                         }}
                     />
                 </PayPalScriptProvider>
-            ):(
-                <div className="spinner mx-auto my-auto"></div>
+            ) : (
+                <div className="spinner w-[60px] h-[60px]  mx-auto my-auto"></div>
             )}
         </div>
     )

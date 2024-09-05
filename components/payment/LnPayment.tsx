@@ -49,7 +49,7 @@ const LnPayment = ({ invoice }: any) => {
                     <Button onClick={() => copyText(invoiceStr)} >Copy Invoice</Button>
                 </>
             ) : (
-                <div className="spinner mx-auto my-auto"></div>
+                <div className="spinner mx-auto  w-[60px] h-[60px] my-auto"></div>
             )}
         </div>
     )

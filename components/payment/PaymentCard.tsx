@@ -122,7 +122,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
                     </TabsContent>
                 </Tabs >
             ) : (
-                <div className="spinner mx-auto my-auto mt-32"></div>
+                <div className="spinner w-[60px] h-[60px]  mx-auto my-auto mt-32"></div>
             )}
         </>
     )

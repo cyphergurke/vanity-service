@@ -23,8 +23,8 @@ const OnChainPayment = ({ invoice }: any) => {
         <div className='flex flex-col text-center justify-center items-center'>
             {invoiceQR ? (
                 <Image src={invoiceQR} alt="lnInvoice" width={350} height={350} />
-            ):(
-                <div className="spinner mx-auto my-auto"></div>
+            ) : (
+                <div className="spinner w-[60px] h-[60px]  mx-auto my-auto"></div>
             )}
         </div>
     )

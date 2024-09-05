@@ -49,7 +49,7 @@
       "keypair-generate-btn": "Generate a keypair on your own risk",
       "entropy-text": "Drag the mouse or swipe with the finger over the screen to generate entropy.",
       "security-hint": "Please note that this is not the best way to generate a key pair. We do not store the private key, import the private key into a wallet.",
-      "private-key": "Private Key - is not saved by us!",
+      "private-key": "Private Key - Save this in your Wallet, its not saved by us!",
       "public-key": "Public Key - is saved for calculation!",
       "private-key-copy-description": "Your Key is copied, be carefulthis this is not the best practice to handle Private Keys.",
       "public-key-copy-description": "Public Key is copied.",

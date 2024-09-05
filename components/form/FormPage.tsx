@@ -59,7 +59,6 @@ const FormPage = ({ translation }: any) => {
         if (addrType === "bc1q") {
             cs = 1
         }
-        console.log(pathName)
         const data = {
             _id: id,
             language: pathName,
@@ -168,16 +167,17 @@ const FormPage = ({ translation }: any) => {
                                     hover:bg-green-600 hover:shadow-white hover:shadow-md active
                                      focus:border-white focus:border-2 focus:shadow-white focus:shadow-lg '
                                     disabled={true}>
-                                    Bestellung wird gesendet
+                                    {pathName === '/en' ? 'Send Booking' : 'Bestellung wird gesendet'}
+                                    <div className="spinner mx-auto w-4  h-4  my-auto"></div>
                                 </Button>
                             ) : (
                                 <Button
-                                    className='bg-green-700 transition-all duration-300
+                                    className='flex gap-2 bg-green-700 transition-all duration-300
                                         hover:bg-green-600 hover:shadow-white hover:shadow-md active
                                         focus:border-white focus:border-2   focus:shadow-white focus:shadow-lg '
                                     disabled={!addrType || !prefixStr || !pubKey || !email}
                                     onClick={() => onsubmit()}>
-                                    Berechnen
+                                    {pathName === '/en' ? 'Calculate' : 'Berechnen'}
                                 </Button>
                             )}
                         </section>

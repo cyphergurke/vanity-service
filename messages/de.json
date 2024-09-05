@@ -50,7 +50,7 @@
       "keypair-generate-btn": "Schlüsselpaar auf eigene Gefahr generieren",
       "entropy-text": "Bewege die Maus oder wische mit dem Finger über den Bildschirm, um entropy zu generieren.",
       "security-hint": "Bitte beachten Sie, dass dies nicht die beste Methode ist ein Schlüsselpaar zu erzeugen. Wir speichern nicht den Privaten Schlüssel, Importieren Sie den Privaten Schlüssel in eine Wallet.",
-      "private-key": "Privater Schlüssel - wird nicht gespeichert!",
+      "private-key": "Privater Schlüssel - Sicheren Sie diesen in ihrer Wallet, er wird nicht von uns gespeichert!",
       "private-key-copy-description": "Privater Schlüssel kopiert. Bedenke das dies keine sichere Methode ist!",
       "public-key": "Öffentlicher Schlüssel - wird zur Berechnung gespeichert!",
       "public-key-copy-description": "Öffentlicher Schlüssel kopiert!",
