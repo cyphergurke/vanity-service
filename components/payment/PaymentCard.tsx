@@ -16,11 +16,11 @@ import {
 } from "@/components/ui/tabs"
 import Paypal from "./PaypalPayment"
 import { usePathname, useRouter } from "next/navigation"
-import OrderInfo from "./OrderInfo"
 import LnPayment from "./LnPayment"
 import OnChainPayment from "./OnChainPayment"
 import axios from "axios"
 import { useEffect } from "react"
+import React from "react"
 
 type TPaymentCard = {
     paymentstr: string | undefined,
@@ -37,7 +37,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
     const checkPaymentStatus = async () => {
         const checkPaymentInterval = setInterval(async () => {
             const btcpayment = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/btc/paid/${order._id}`)
-            if (btcpayment.data.chargeInfo.status === "paid") {
+            if (btcpayment.data.chargeInfo.status === "paid" && order.price === 0) {
                 router.push(`${langpath}/order/paid/${order._id}`)
                 clearInterval(checkPaymentInterval)
             }
@@ -45,7 +45,11 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
     }
 
     useEffect(() => {
-        if (payment && payment.status === "paid") {
+        if (payment && payment.status === "paid" && order.price > 0) {
+            router.push(`${langpath}/order/invoice/${order._id}`)
+            return
+        }
+        if (payment && payment.status === "paid" && order.price === 0) {
             router.push(`${langpath}/order/paid/${order._id}`)
             return
         }
@@ -106,7 +110,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
                             <CardHeader>
                                 <CardTitle>Paypal</CardTitle>
                                 <CardDescription>
-                                    <OrderInfo order={order} />
+                                    <p>Order: {order.price}</p>
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-2">

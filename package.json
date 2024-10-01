@@ -36,6 +36,7 @@
     "clsx": "^2.1.1",
     "ecpair": "^2.1.0",
     "framer-motion": "^11.3.30",
+    "jspdf": "^2.5.2",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.4",
     "next": "^14.2.6",

@@ -1,7 +1,6 @@
-"use server"
-
-import PaymentSucceeded from '@/components/payment/PaymentSucceeded'
+import Invoice from '@/components/payment/invoice/Invoice'
 import { getOrderById } from '@/lib/actions/order.action'
+import React from 'react'
 
 const page = async ({ params }: { params: { id: string } }) => {
     const getOrder = async () => {
@@ -12,8 +11,8 @@ const page = async ({ params }: { params: { id: string } }) => {
 
     const orderObjStr = JSON.stringify(order);
     return (
-        <div className='flex justify-center items-center h-[72vh] w-full'>
-            <PaymentSucceeded orderstr={orderObjStr} />
+        <div className='flex justify-center items-center'>
+            <Invoice orderstr={orderObjStr} />
         </div>
     )
 }

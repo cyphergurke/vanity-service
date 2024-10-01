@@ -1,25 +1,16 @@
-export function convertTimestamp(timestamp: number) {
-    const date = new Date(timestamp * 1000);
-    const options: Intl.DateTimeFormatOptions = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        timeZoneName: 'short'
-    };
-    const formattedDate = date.toLocaleDateString('de-DE', options) + ', ' + date.toLocaleTimeString('de-DE', options);
-    return formattedDate;
+export function formatDate(date: Date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${day}.${month}.${year}`;
 }
 
-
-export const calculateRestTime = (futureTimestamp: number): {minutes: number, seconds: number} => {
+export const calculateRestTime = (futureTimestamp: number): { minutes: number, seconds: number } => {
     const now = Date.now();
     const millisecondsDiff = futureTimestamp * 1000 - now;
     if (millisecondsDiff < 0) {
-        return {minutes: 0, seconds: 0};
+        return { minutes: 0, seconds: 0 };
     }
     let remaining = millisecondsDiff / 1000;
     const days = Math.floor(remaining / 86400);
@@ -28,5 +19,11 @@ export const calculateRestTime = (futureTimestamp: number): {minutes: number, se
     remaining %= 3600;
     const minutes = Math.floor(remaining / 60);
     const seconds = Math.floor(remaining % 60);
-    return {minutes, seconds};
+    return { minutes, seconds };
+};
+
+
+export const getCurrentDate = () => {
+    const today = new Date();
+    return today.toISOString().split("T")[0]; // Formatierung in "YYYY-MM-DD"
 };

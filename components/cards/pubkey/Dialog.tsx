@@ -17,8 +17,8 @@ import { toast } from "sonner"
 
 import * as QRCode from 'qrcode'
 import Image from "next/image"
-/* import WebcamCapture from "@/components/Webcam" */
 import Progress from "@/components/Progress"
+import React from "react"
 
 type TPubKeyDialog = {
   pubKey: string;

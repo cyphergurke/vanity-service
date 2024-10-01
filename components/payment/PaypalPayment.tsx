@@ -3,12 +3,13 @@
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import axios from 'axios'
 import { usePathname, useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Paypal = ({ order }: any) => {
-
+    const [isLoading, setIsLoading] = useState(true);
     const router = useRouter()
     const pathname = usePathname()
+
     const paypalCreateOrder = async () => {
         try {
             const postData = {
@@ -61,6 +62,9 @@ const Paypal = ({ order }: any) => {
                         }}
                         onApprove={async (data) => {
                             await paypalCaptureOrder(data)
+                        }}
+                        onInit={() => {
+                            setIsLoading(false);
                         }}
                     />
                 </PayPalScriptProvider>
