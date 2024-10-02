@@ -10,6 +10,8 @@
 /coverage
 /computed
 
+/uploads
+
 # next.js
 /.next/
 /out/
