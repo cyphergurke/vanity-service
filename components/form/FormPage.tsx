@@ -81,10 +81,6 @@ const FormPage = ({ translation }: any) => {
             const res: any = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/order/create`, orderData)
             if (res.data.created) {
                 router.push(`${pathName}/order/checkout/${id}`)
-                setAddrType('')
-                setPrefixStr('')
-                setPubKey('')
-                setSubmitting(false)
             }
         } catch (error: any) {
             console.log(error.message)

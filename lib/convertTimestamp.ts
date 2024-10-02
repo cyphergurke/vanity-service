@@ -22,8 +22,3 @@ export const calculateRestTime = (futureTimestamp: number): { minutes: number, s
     return { minutes, seconds };
 };
 
-
-export const getCurrentDate = () => {
-    const today = new Date();
-    return today.toISOString().split("T")[0]; // Formatierung in "YYYY-MM-DD"
-};

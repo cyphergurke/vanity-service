@@ -1,36 +1,43 @@
 "use client"
 
 import axios from 'axios'
-import { useRouter } from 'next/navigation'
-
 import React, { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
-import QrDialog from './QrDialog'
+import QrDialog from '../payment/QrDialog'
+import { IOrder } from '@/lib/actions/order.model'
+import Link from 'next/link'
+import { useLocale, useTranslations } from 'next-intl'
 
-const PaymentSucceeded = ({ orderstr }: any) => {
+const OrderStatus = ({ orderstr }: any) => {
     const [progress, setProgress] = useState([])
-    const [order, setOrder] = useState(JSON.parse(orderstr))
+    const [order, setOrder] = useState<IOrder>(JSON.parse(orderstr))
 
-    const router = useRouter()
+    const locale = useLocale()
 
+    const s = useTranslations('Status')
 
-
-    const checkProgress = async () => {
-        const checkProgressInterval = setInterval(async () => {
-            const vanityProgress = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/btc/paid/${order._id}`)
-            if (vanityProgress.data.status === "COMPUTING" && vanityProgress.data.progress) {
-                setProgress(vanityProgress.data.progress)
-                setOrder(vanityProgress.data.order)
-            } else if (vanityProgress.data.status === "COMPLETED") {
-                setProgress([])
-                clearInterval(checkProgressInterval)
-            }
-        }, 6000)
-    }
 
     useEffect(() => {
-        checkProgress()
-    }, [])
+        const checkProgress = async () => {
+            const vanityProgress = await axios.get(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/btc/paid/${order._id}`
+            );
+            if (vanityProgress.data.status === 'COMPUTING' && vanityProgress.data.progress) {
+                setProgress(vanityProgress.data.progress);
+                setOrder(vanityProgress.data.order);
+            } else if (vanityProgress.data.status === 'COMPLETED') {
+                setProgress(vanityProgress.data.progress);
+                clearInterval(checkProgressInterval);
+            }
+        };
+
+        const checkProgressInterval = setInterval(checkProgress, 6000);
+
+        return () => {
+            clearInterval(checkProgressInterval);
+        };
+    }, [order._id]);
+
 
 
     return (
@@ -46,6 +53,7 @@ const PaymentSucceeded = ({ orderstr }: any) => {
                 <b>Vanity Address Prefix: </b> {order.addrtype + order.prefixstr}</p>
             <p className='flex justify-between p-2 break-words text-wrap'>
                 <b>Status: </b>
+                {order.status === "PENDING" && <span className='text-red'>Noch nicht bezahlt</span>}
                 {(order.status === "PAID" || order.status === "QUEUED") && "Berechnung ist in der Warteschlange"}
                 {order.status === "COMPUTING" && "Vanity Adresse wird berechnet"}
                 {order.status === "COMPLETED" && "Vanity Adresse berechnet"}
@@ -74,18 +82,32 @@ const PaymentSucceeded = ({ orderstr }: any) => {
                 <b className="whitespace-nowrap pr-1">vanity address: </b>
                 <span className="break-all text-right flex flex-col-reverse"> {order.vanityAddr}</span>
             </p>
-            <div className="flex flex-col gap-2 justify-center items-center mt-6">
+            <div className="flex gap-2 justify-center items-center mt-6">
                 {order.partialPriv &&
-                    <QrDialog dataUrl={order.partialPriv} />
+                    <>
+                        <QrDialog dataUrl={order.partialPriv} />
+                        <Link href={`https://vanity-split-key-merge.bitcoin-uni.de/${order.vanityAddr}/${order.partialPriv}`}>
+                            <Button className='bg-green-700' >
+                                Merge Partial Keys
+                            </Button>
+                        </Link>
+                    </>
                 }
-                <Button variant="secondary" onClick={() => {
-                    router.push(`https://vanity-split-key-merge.bitcoin-uni.de/${order.vanityAddr}/${order.partialPriv}`)
-                }} >
-                    Merge Partial Keys
-                </Button>
+                {order.status === "PENDING" &&
+                    <Link href={`/${locale}/order/checkout/${order._id}`}>
+                        <Button className='bg-green-700'>
+                            Jetzt bezahlen
+                        </Button>
+                    </Link>
+                }
+                <Link href={`/${locale}/order/invoice/${order._id}`}>
+                    <Button variant="secondary">
+                        Rechnung erstellen
+                    </Button>
+                </Link>
             </div>
         </div>
     )
 }
 
-export default PaymentSucceeded
+export default OrderStatus

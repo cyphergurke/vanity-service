@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { Textarea } from "../ui/textarea";
 import { cn } from "@/lib/utils";
 

@@ -36,9 +36,9 @@ export interface IOrder extends Document {
     vanityAddr?: string;
     email?: string;
     lnurl?: string;
-    price?: number;
+    price: number;
     payment?: IPayment;
-    status: string;
+    status: paymentStatusEnum;
     createdAt: Date;
     updatedAt?: Date;
 }
@@ -124,7 +124,9 @@ const OrderSchema = new Schema({
         type: PaymentSchema,
         required: false
     },
-    status: { type: String, required: true },
+    status: {
+        type: ["PAID", "PENDING", "QUEUED", "COMPUTING", "COMPLETED"], required: true
+    },
     progress: { type: Array, default: 0, required: false },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, required: false },

@@ -1,6 +1,6 @@
 "use server"
 
-import PaymentSucceeded from '@/components/payment/PaymentSucceeded'
+import OrderStatus from '@/components/status/OrderStatus'
 import { getOrderById } from '@/lib/actions/order.action'
 
 const page = async ({ params }: { params: { id: string } }) => {
@@ -13,7 +13,7 @@ const page = async ({ params }: { params: { id: string } }) => {
     const orderObjStr = JSON.stringify(order);
     return (
         <div className='flex justify-center items-center h-[72vh] w-full'>
-            <PaymentSucceeded orderstr={orderObjStr} />
+            <OrderStatus orderstr={orderObjStr} />
         </div>
     )
 }

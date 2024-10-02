@@ -122,5 +122,59 @@
   },
   "Guide": {
     "title": "Instructions for Ordering and Using Vanity Addresses"
+  },
+  "Checkout": {
+    "thankyou": "Thank you for your order!",
+    "title": "Choose a payment method",
+    "lnTitle": "Pay with the Bitcoin Lightning Network",
+    "lnSubTitle": "Scan the QR code with your Bitcoin Lightning wallet",
+    "onChainTitle": "Pay with Bitcoin OnChain",
+    "onChainSubTitle": "Scan the QR code with your Bitcoin wallet",
+    "paypalTitle": "Pay with €/$ via Paypal",
+    "paypalSubTitle": "Choose a payment method",
+    "amount": "Amout",
+    "orderDetails": "Order details",
+    "price": "Price",
+    "tax": "Taxes"
+  },
+  "Invoice": {
+    "title": "Generate Invoice",
+    "privat": {
+      "title": "For Privat Customers",
+      "subTitle": "As a private individual, you do not have to issue an invoice if you do not wish to do so.",
+      "continuebtn": "Continue without Invoice"
+    },
+    "b2b": {
+      "title": "For Privat Customers",
+      "subTitle": "As B2B Custommer you have to generate an invoice."
+    },
+    "form": {
+      "companyName": "Company Name",
+      "companyNamePlaceholder": "Your Company Name",
+      "companyNameZod": "Company Name is required",
+      "name": "Name",
+      "namePlaceholder": "Your Name",
+      "nameZod": "Name is required",
+      "address": "Street and number",
+      "addressPlaceholder": "Your address with street and number",
+      "addressZod": "Address is required",
+      "postalCode": "Zip Code",
+      "postalCodePlaceholder": "Your zip code",
+      "postalCodeZod": "Zip code is required",
+      "city": "City",
+      "cityPlaceholder": "Your City",
+      "cityZod": "City is required",
+      "country": "Country",
+      "countryPlaceholder": "Your Country",
+      "countryZod": "Country is required",
+      "email": "E-Mail Address",
+      "emailPlaceholder": "Your E-Mail Address",
+      "emailZodUnvalid": "Email address is unvalid",
+      "emailZodRequired": "Email address is required",
+      "vatId": "Vat-Id",
+      "vatIdPlaceholder": "Your Vat-Id is required",
+      "vatIdZod": "Vat-Id is required"
+    },
+    "submitbtn": "Generate Invoice"
   }
 }

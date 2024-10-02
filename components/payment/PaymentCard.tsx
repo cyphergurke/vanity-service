@@ -21,6 +21,9 @@ import OnChainPayment from "./OnChainPayment"
 import axios from "axios"
 import { useEffect } from "react"
 import React from "react"
+import { useLocale, useTranslations } from "next-intl"
+import Details from "./Details"
+import { IOrder } from "@/lib/actions/order.model"
 
 type TPaymentCard = {
     paymentstr: string | undefined,
@@ -29,41 +32,47 @@ type TPaymentCard = {
 
 const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
     const payment = paymentstr && JSON.parse(paymentstr)
-    const order = JSON.parse(orderstr)
+    const order: IOrder = JSON.parse(orderstr)
     const router = useRouter()
-    const pathname = usePathname()
-    const langpath = pathname.slice(0, 3)
+    const locale = useLocale()
 
-    const checkPaymentStatus = async () => {
-        const checkPaymentInterval = setInterval(async () => {
-            const btcpayment = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/btc/paid/${order._id}`)
-            if (btcpayment.data.chargeInfo.status === "paid" && order.price === 0) {
-                router.push(`${langpath}/order/paid/${order._id}`)
-                clearInterval(checkPaymentInterval)
-            }
-        }, 4000)
-    }
+    const c = useTranslations('Checkout')
 
     useEffect(() => {
-        if (payment && payment.status === "paid" && order.price > 0) {
-            router.push(`${langpath}/order/invoice/${order._id}`)
-            return
+        const checkPaymentStatus = async () => {
+            const btcpayment = await axios.get(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/btc/paid/${order._id}`
+            );
+
+            if (btcpayment.data.chargeInfo.status === 'paid' && order.price === 0) {
+                router.push(`${locale}/order/paid/${order._id}`);
+                clearInterval(checkPaymentInterval);
+            }
+        };
+
+        const checkPaymentInterval = setInterval(checkPaymentStatus, 4000);
+        return () => {
+            clearInterval(checkPaymentInterval);
+        };
+    }, [order._id, locale, router]);
+
+    useEffect(() => {
+        if (payment && payment.status === 'paid' && order.price > 0) {
+            router.push(`${locale}/order/invoice/${order._id}`);
+            return;
         }
-        if (payment && payment.status === "paid" && order.price === 0) {
-            router.push(`${langpath}/order/paid/${order._id}`)
-            return
+        if (payment && payment.status === 'paid' && order.price === 0) {
+            router.push(`${locale}/order/paid/${order._id}`);
+            return;
         }
-        if (payment && payment.status !== "paid") {
-            checkPaymentStatus()
-        }
-    }, [payment])
+    }, [payment, order._id, locale, router]);
 
 
     return (
         <>
             {paymentstr && orderstr && payment.status !== "paid" ? (
                 <Tabs defaultValue="lightning" className="md:w-1/3 w-full m-5" >
-                    <p className="text-2xl text-white text-center pb-10">Choose Payment Method</p>
+                    <p className="text-2xl text-white text-center pb-10">{c('title')}</p>
                     <TabsList className="grid w-full grid-cols-3">
                         <TabsTrigger value="lightning">Lightning</TabsTrigger>
                         <TabsTrigger value="onchain">Onchain</TabsTrigger>
@@ -72,12 +81,13 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
                     <TabsContent value="lightning">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Pay with Lightning</CardTitle>
+                                <CardTitle>{c('lnTitle')}</CardTitle>
                                 <CardDescription>
-                                    Scan the Invoice with your Lightning Wallet!
+                                    {c('lnSubTitle')}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-2">
+                                <Details order={order} />
                                 {payment && payment.lightning_invoice &&
                                     <LnPayment invoice={payment.lightning_invoice} />
                                 }
@@ -90,12 +100,13 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
                     <TabsContent value="onchain">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Bitcoin OnChain</CardTitle>
+                                <CardTitle>{c('onChainTitle')}</CardTitle>
                                 <CardDescription>
-                                    Scan the QRCode with your Bitcoin Wallet and pay the invoice!
+                                    {c('onChainSubTitle')}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-2">
+                                <Details order={order} />
                                 {payment && payment.lightning_invoice &&
                                     <OnChainPayment invoice={payment} />
                                 }
@@ -108,16 +119,16 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
                     <TabsContent value="paypal">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Paypal</CardTitle>
+                                <CardTitle>{c('paypalTitle')}</CardTitle>
                                 <CardDescription>
-                                    <p>Order: {order.price}</p>
+                                    {c('paypalSubTitle')}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-2">
+                                <Details order={order} />
                                 {order &&
                                     <Paypal order={order} />
                                 }
-
                             </CardContent>
                             <CardFooter>
 

@@ -123,5 +123,59 @@
   },
   "Guide": {
     "title": "Anleitung zur Bestellung und Nutzung von Vanity Adressen"
+  },
+  "Checkout": {
+    "thankyou": "Vielen Dank für Ihre Bestellung!",
+    "title": "Wähle eine Zahlungsmethode",
+    "lnTitle": "Bezahle mit dem Bitcoin Lightning Netzwerk",
+    "lnSubTitle": "Scanne den QRCode mit deiner Bitcoin Lightning Wallet",
+    "onChainTitle": "Bezahle mit Bitcoin OnChain",
+    "onChainSubTitle": "Scanne den QRCode mit deiner Bitcoin Wallet",
+    "paypalTitle": "Bezahle mit €/$ via Paypal",
+    "paypalSubTitle": "Wähle eine Zahlungsmethode",
+    "amount": "Betrag",
+    "orderDetails": "Details",
+    "price": "Preis",
+    "tax": "Mwst"
+  },
+  "Invoice": {
+    "title": "Rechnung erstellen",
+    "privat": {
+      "title": "Für Privat Kunden",
+      "subTitle": "Als Privatperson müssen sie keine Rechnung erstellen, wennn sie das nicht möchten.",
+      "continuebtn": "Weiter ohne Rechnung"
+    },
+    "b2b": {
+      "title": "For Privat Customers",
+      "subTitle": "Als Privatperson müssen sie keine Rechnung erstellen, wennn sie das nicht möchten."
+    },
+    "form": {
+      "companyName": "Firmenname",
+      "companyNamePlaceholder": "Ihr Firmennamen",
+      "companyNameZod": "Der Firmenname ist erforderlich",
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "nameZod": "Der Name ist erforderlich",
+      "address": "Straße und Hausnummer",
+      "addressPlaceholder": "Geben Sie die Straße und Hausnummer ein",
+      "addressZod": "Die Straße und Hausnummer sind erforderlich",
+      "postalCode": "Postleitzahl",
+      "postalCodePlaceholder": "Geben Sie Ihre Postleitzahl ein",
+      "postalCodeZod": "Die Postleitzahl ist erforderlich",
+      "city": "Stadt",
+      "cityPlaceholder": "Geben Sie Ihre Stadt ein",
+      "cityZod": "Die Stadt ist erforderlich",
+      "country": "Land",
+      "countryPlaceholder": "Geben Sie Ihr Land ein",
+      "countryZod": "Das Land ist erforderlich",
+      "email": "E-Mail Adresse",
+      "emailPlaceholder": "Geben Sie ihre E-Mail Adresse ein",
+      "emailZodUnvalid": "Die E-Mail Adresse ist ungültig",
+      "emailZodRequired": "Die E-Mail Adresse ist erforderlich",
+      "vatId": "Ust-IdNr",
+      "vatIdPlaceholder": "Geben Sie ihre Umsatzsteuer Identifikations-Nummer ein",
+      "vatIdZod": "Die Ust-IdNr ist erforderlich"
+    },
+    "submitbtn": "Rechnung erstellen"
   }
 }

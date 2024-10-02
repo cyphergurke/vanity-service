@@ -1,4 +1,4 @@
-import Invoice from '@/components/payment/invoice/Invoice'
+import Invoice from '@/components/invoice/Invoice'
 import { getOrderById } from '@/lib/actions/order.action'
 import React from 'react'
 

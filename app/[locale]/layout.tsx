@@ -34,7 +34,7 @@ export default async function LocaleLayout({
       </head>
       <body className={inter.className}>
         <main className="flex  flex-col min-h-screen bg-main">
-          <NextIntlClientProvider messages={messages}>
+          <NextIntlClientProvider messages={messages} locale={locale}>
             <NavBar />
             <div className="flex-grow">
               {children}
