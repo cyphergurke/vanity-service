@@ -19,7 +19,7 @@ export type TSectionRef = {
     pubKey: RefObject<HTMLDivElement>
 }
 
-const FormPage = ({ translation }: any) => {
+const FormPage = () => {
     const [price, setPrice] = useState<number>()
     const [addrType, setAddrType] = useState('')
     const [prefixStr, setPrefixStr] = useState('')
@@ -108,7 +108,6 @@ const FormPage = ({ translation }: any) => {
                         scroll={scrollToSection}
                         addrType={addrType}
                         setAddrType={setAddrType}
-                        translate={translation.addrTypeTranslation}
                     />
                 </section>
                 {addrType && (
@@ -125,12 +124,10 @@ const FormPage = ({ translation }: any) => {
                                 setPrefixErr={setPrefixErr}
                                 caseSensitive={caseSensitive}
                                 setCaseSensitive={setCaseSensitive}
-                                translate={translation.prefixTranslation}
                             />
                             <PriceCalculation
                                 price={price}
                                 setPrice={setPrice}
-                                translate={translation.prefixTranslation}
                                 caseSensitive={caseSensitive}
                                 addrType={addrType}
                                 prefixLen={prefixStr.length}
@@ -143,7 +140,6 @@ const FormPage = ({ translation }: any) => {
                                 pubKey={pubKey}
                                 setPubKey={setPubKey}
                                 pubkeyErr={pubkeyErr}
-                                translate={translation.pubkeyTranslation}
                             />
                         </section>
                         <section
@@ -151,7 +147,6 @@ const FormPage = ({ translation }: any) => {
 
                         >
                             <Contact
-                                translate={translation.contactTranslation}
                                 setEmail={setEmail}
                                 setLnUrl={setLnUrl}
                             />

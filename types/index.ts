@@ -8,14 +8,7 @@ export type TaddrTypeTranslation = {
     nativeSegwitText: string;
 }
 
-export type TprefixTranslation = {
-    prefixTitle: string;
-    prefixSubTitle: string;
-    prefixCasesensitive: string;
-    disallowedPrefix: string;
-    disallowedfirstchar: string;
-    invalidPrefix: string;
-}
+
 
 export type TpubkeyTranslation = {
     pubkeyTitle: string;

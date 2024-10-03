@@ -14,10 +14,10 @@ const page = async ({ params }: { params: { id: string } }) => {
 
     let opennodeInvoice;
     if (order && !order.payment && order.price !== 0) {
-        opennodeInvoice = await getBTCInvoice(order._id, order.price);
+        opennodeInvoice = await getBTCInvoice(order._id, order.priceIncltaxes);
     } else if (order && order.payment && order.payment.opennode && order.payment.opennode.status === 'unpaid') {
         const restTime = await calculateRestTime(order.payment.opennode.lightning_invoice.expires_at)
-        opennodeInvoice = restTime.minutes > 0 ? order.payment.opennode : await getBTCInvoice(order._id, order.price);
+        opennodeInvoice = restTime.minutes > 0 ? order.payment.opennode : await getBTCInvoice(order._id, order.priceIncltaxes);
     } else if (order.price === 0) {
         opennodeInvoice = { status: "paid" }
     }

@@ -5,23 +5,23 @@ import { Input } from '../ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 import { Button } from '../ui/button';
+import { useTranslations } from 'next-intl';
 
 
 type TContact = {
-    translate: any;
     setEmail: React.Dispatch<React.SetStateAction<string>>;
     setLnUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Contact = ({ setEmail, setLnUrl, translate }: TContact) => {
+const Contact = ({ setEmail, setLnUrl }: TContact) => {
     const [option, setOption] = useState<'email' | 'lnurl'>()
 
-
+    const c = useTranslations('Form.contact')
 
     return (
         < >
             <h2 className='text-white text-center text-2xl'>
-                {translate.contactTitle}
+                {c('title')}
             </h2>
             <div className='mt-10'>
                 <Card className="mx-auto w-[80%] lg:w-[400px]
@@ -32,7 +32,7 @@ const Contact = ({ setEmail, setLnUrl, translate }: TContact) => {
 
                         </CardTitle>
                         <CardDescription className=" text-white">
-                            {translate.contactText}
+                            {c('text')}
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

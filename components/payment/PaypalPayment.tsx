@@ -14,7 +14,7 @@ const Paypal = ({ order }: any) => {
         try {
             const postData = {
                 orderId: order._id,
-                order_price: order.price
+                order_price: order.priceIncltaxes
             }
             const response = await axios.post('/api/paypal/createorder', postData)
             return response.data.id
@@ -41,7 +41,7 @@ const Paypal = ({ order }: any) => {
 
     return (
         <div>
-            {process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID && order ? (
+            {process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID && (
                 <PayPalScriptProvider
                     options={{
                         'clientId': process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
@@ -49,6 +49,9 @@ const Paypal = ({ order }: any) => {
                         'intent': 'capture'
                     }}
                 >
+                    {isLoading && (
+                        <div className="spinner w-[60px] h-[60px]  mx-auto my-auto"></div>
+                    )}
                     <PayPalButtons
                         style={{
                             color: 'gold',
@@ -68,8 +71,6 @@ const Paypal = ({ order }: any) => {
                         }}
                     />
                 </PayPalScriptProvider>
-            ) : (
-                <div className="spinner w-[60px] h-[60px]  mx-auto my-auto"></div>
             )}
         </div>
     )

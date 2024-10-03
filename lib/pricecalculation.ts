@@ -133,6 +133,12 @@ export async function calculatePrice(_addresstype: string, praefixLength: number
     }
   }
 
-  const price = praefix_price + Math.round(praefix_cs_price) 
-  return price;
+
+  const price = praefix_price + Math.round(praefix_cs_price)
+  const taxes = price * 0.19
+  console.log(taxes)
+  return {
+    price: price,
+    priceIncltaxes: taxes
+  }
 }

@@ -7,10 +7,12 @@ export async function POST(req: NextRequest) {
         const data: any = await req.json();
         const prefixLenght = data.prefixstr.length;
         const price = await calculatePrice(data.addrtype, prefixLenght, data.casesensitive)
-        
+
         const orderData = data;
-        orderData.price = price
-        if (price === 0) {
+        console.log(price)
+        orderData.price = price.price
+        orderData.priceIncltaxes = price.priceIncltaxes
+        if (price.price === 0) {
             orderData.status = "PAID";
         }
         await createOrder(orderData)

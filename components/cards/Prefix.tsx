@@ -5,11 +5,9 @@ import { Input } from '../ui/input'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card'
 import { Checkbox } from '../ui/checkbox'
 import { Label } from '../ui/label'
-import { TprefixTranslation } from '@/types'
-import { rules, validateAddressPrefix } from '@/lib/prefixValidation'
+import { useTranslations } from 'next-intl'
 
 type TPrefix = {
-  translate: TprefixTranslation,
   addrType: string,
   prefixStr: string,
   setPrefixStr: React.Dispatch<React.SetStateAction<string>>,
@@ -21,7 +19,6 @@ type TPrefix = {
 
 
 const Prefix = ({
-  translate,
   addrType,
   prefixStr,
   setPrefixStr,
@@ -30,9 +27,57 @@ const Prefix = ({
   caseSensitive,
   setCaseSensitive,
 }: TPrefix) => {
+
+  const f = useTranslations("Form")
+
+  const rules: any = {
+    "1": {
+      allowed: /^[1-9A-HJ-NP-Za-kn-z]+$/,
+      disallowed: /[0OIl]/,
+      maxLength: 8,
+      typeName: "Legacy",
+    },
+    "3": {
+      allowed: /^[1-9A-HJ-NP-Za-kn-z]*$/,
+      disallowed: /[0OIl]/,
+      maxLength: 8,
+      typeName: "Nested SegWit",
+    },
+    "bc1q": {
+      allowed: /^[0-9a-qs-z]$/,
+      disallowed: /[1bio]/,
+      maxLength: 10,
+      typeName: "Native SegWit Bech32",
+    },
+  };
+  const validateAddressPrefix = (addrType: string, prefixStr: string) => {
+    const disallowedChars = [];
+    const invalidChars = [];
+    const rule = rules[addrType];
+    const errors = [];
+    if (addrType === "3" && !/^[2-9A-Q]/.test(prefixStr[0])) {
+      errors.push(<p>{f('prefix.disallowedfirstchar')}: {prefixStr[0]}</p>)
+    }
+    for (let i = 0; i < prefixStr.length; i++) {
+      const char = prefixStr[i];
+      if (rule.disallowed.test(char)) {
+        disallowedChars.push(char);
+      } else if (!rule.allowed.test(char)) {
+        invalidChars.push(char);
+      }
+    }
+    if (disallowedChars.length > 0) {
+      errors.push(<p>{f('prefix.disallowedPrefix')}: {[...new Set(disallowedChars)].join(', ')}</p>);
+    }
+    if (invalidChars.length > 0) {
+      errors.push(<p>{f('prefix.invalidPrefix')}: {[...new Set(invalidChars)].join(', ')}</p>);
+    }
+    return errors
+  };
+
   useEffect(() => {
     if (prefixStr.length > 0) {
-      const validateErr: any = validateAddressPrefix(addrType, prefixStr, translate)
+      const validateErr: any = validateAddressPrefix(addrType, prefixStr)
       setPrefixErr(validateErr)
     } else setPrefixErr(null)
   }, [prefixStr, addrType])
@@ -59,10 +104,14 @@ const Prefix = ({
     return result;
   }
 
+
+
+
+
   return (
     <div className='flex flex-col justify-center mt-20 items-center'>
       <h2 className='text-white text-2xl'>
-        {translate.prefixTitle}
+        {f('prefix.title')}
       </h2>
       <div className='mt-10'>
         <Card className="mx-auto w-[80%] lg:w-[400px]
@@ -72,7 +121,7 @@ const Prefix = ({
             <CardTitle className="text-slate-300 text-center">
             </CardTitle>
             <CardDescription className="text-white">
-              {translate.prefixSubTitle}
+              {f('prefix.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -106,7 +155,7 @@ const Prefix = ({
                   htmlFor="casesensitive"
                   className="text-sm font-medium ml-1 text-white  cursor-pointer peer-disabled:opacity-70"
                 >
-                  {translate.prefixCasesensitive}
+                  {f('prefix.casesensitive')}
                 </Label>
               </>
             }

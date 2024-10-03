@@ -6,22 +6,44 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 import { PubKeyDialog } from './Dialog';
 import QrDialog from './QrDialog';
+import { useTranslations } from 'next-intl';
 
 
 type TPubKey = {
-  translate: any;
   pubKey: string;
   setPubKey: React.Dispatch<React.SetStateAction<string>>;
   pubkeyErr: string | null;
 }
 
 
-const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
+const PubKey = ({ pubKey, setPubKey, pubkeyErr }: TPubKey) => {
   const [genpubkey, setgenpubkey] = useState('')
 
   useEffect(() => {
     setPubKey(genpubkey)
   }, [genpubkey])
+
+  const f = useTranslations('Form')
+  const translate = {
+    pubkeyTitle: f('pubkey.title'),
+    pubkeyText: f('pubkey.text'),
+    dialogBTN: f('pubkey.dialog-btn'),
+    aboutPubkeyTitle: f('pubkey.aboutpubkey-title'),
+    aboutPubkeyText: f('pubkey.aboutpubkey-text'),
+    chooseWalletTitle: f('pubkey.chooseWallet-title'),
+    chooseWalletText: f('pubkey.chooseWallet-text'),
+    exportPubkeyTitle: f('pubkey.exportpubkey-title'),
+    exportPubkeyText: f('pubkey.exportpubkey-text'),
+    keypairGenerateBTN: f('pubkey.keypair-generate-btn'),
+    entropyText: f('pubkey.entropy-text'),
+    securityHint: f('pubkey.security-hint'),
+    privateKey: f('pubkey.private-key'),
+    privateKeyCopyDescription: f('pubkey.private-key-copy-description'),
+    publicKey: f('pubkey.public-key'),
+    publicKeyCopyDescription: f('pubkey.public-key-copy-description'),
+    pubkeyTakethisPubKeyBTN: f('pubkey.usepubkey-btn'),
+    pubkeyRegenerate: f('pubkey.regenerate-btn'),
+  }
 
   return (
     < >
@@ -34,7 +56,7 @@ const PubKey = ({ translate, pubKey, setPubKey, pubkeyErr }: TPubKey) => {
          hover:shadow-white shadow-lg shadow-accent-foreground">
           <CardHeader>
             <CardTitle className="text-slate-300 text-center">
-              {translate.prefixTitle}
+
             </CardTitle>
             <CardDescription className=" text-white">
               {translate.pubkeyText}

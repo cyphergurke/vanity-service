@@ -47,10 +47,10 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
             if (order.payment) {
                 return order.payment
             }
-            
+
             const paymentData = {
                 out: false,
-                amount: order.price,  // Replace with actual amount
+                amount: order.priceIncltaxes,
                 memo: `Your Vanity Address Booking: 
                 Your ordered Prefix ${order.addrtype}${order.prefixstr},
                 Your Public Key: ${order.publickey},

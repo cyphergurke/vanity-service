@@ -37,6 +37,7 @@ export interface IOrder extends Document {
     email?: string;
     lnurl?: string;
     price: number;
+    priceIncltaxes: number;
     payment?: IPayment;
     status: paymentStatusEnum;
     createdAt: Date;
@@ -120,12 +121,13 @@ const OrderSchema = new Schema({
     email: { type: String, required: false },
     lnurl: { type: String, required: false },
     price: { type: Number, default: 0, required: false },
+    priceIncltaxes: { type: Number, default: 0, required: false },
     payment: {
         type: PaymentSchema,
         required: false
     },
     status: {
-        type: ["PAID", "PENDING", "QUEUED", "COMPUTING", "COMPLETED"], required: true
+        type: String, required: true
     },
     progress: { type: Array, default: 0, required: false },
     createdAt: { type: Date, default: Date.now },

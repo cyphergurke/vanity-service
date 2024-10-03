@@ -1,16 +1,29 @@
+"use client"
+
 import { IOrder } from '@/lib/actions/order.model'
 import { useTranslations } from 'next-intl'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Details = ({ order }: { order: IOrder }) => {
+    const [dateTime, setDateTime] = useState<{ date: string; time: string }>({
+        date: '',
+        time: '',
+    });
     const c = useTranslations('Checkout')
+
+    useEffect(() => {
+        const date = new Date(order.createdAt).toLocaleDateString();
+        const time = new Date(order.createdAt).toLocaleTimeString();
+        setDateTime({ date, time });
+    }, [order.createdAt]);
+
     return (
         <div className=''>
             <p className="flex justify-between">
                 <strong>Order ID:</strong> {order._id}
             </p>
             <p className="flex justify-between">
-                <strong>Order Date:</strong> {new Date(order.createdAt).toLocaleString()}
+                <strong>Order Date:</strong> {dateTime.date} {dateTime.time}
             </p>
             <p className="flex justify-between">
                 <strong>{c('price')}:</strong> {order.price}€
@@ -18,6 +31,7 @@ const Details = ({ order }: { order: IOrder }) => {
             <p className="flex justify-between">
                 <strong>{c('tax')}:</strong> {order.price * 0.19}€
             </p>
+            <hr></hr>
             <p className="flex justify-between">
                 <strong>{c('amount')}:</strong> {order.price + order.price * 0.19}€
             </p>

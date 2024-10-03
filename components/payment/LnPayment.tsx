@@ -3,6 +3,7 @@ import Image from "next/image"
 import QRCode from "qrcode"
 import { calculateRestTime } from '@/lib/convertTimestamp'
 import { Button } from '../ui/button'
+import { copyText } from '@/lib/utils'
 
 const LnPayment = ({ invoice }: any) => {
     const [invoiceQR, setInvoiceQR] = useState<string | null>(null)
@@ -32,13 +33,7 @@ const LnPayment = ({ invoice }: any) => {
         return () => clearInterval(timer);
     }, [invoice])
 
-    const copyText = async (text: string) => {
-        try {
-            navigator.clipboard.writeText(text);
-        } catch (err: any) {
-            alert(`Failed to copy text: ${err.message}`);
-        }
-    };
+
 
     return (
         <div className='flex flex-col text-center justify-center items-center'>

@@ -4,6 +4,7 @@ import React, { RefObject } from 'react'
 
 import AddrTypeCard from '../cards/AddrTypeCard';
 import { paragraphs } from '@/lib/formatText';
+import { useTranslations } from 'next-intl';
 
 
 
@@ -12,14 +13,25 @@ type TSelectAddrType = {
   scroll: (nextSectionRef: any) => void,
   addrType: string,
   setAddrType: React.Dispatch<React.SetStateAction<string>>,
-  translate: any,
 }
 
-const SelectAddrType = ({ prefixRef, scroll, addrType, setAddrType, translate }: TSelectAddrType) => {
+const SelectAddrType = ({ prefixRef, scroll, addrType, setAddrType }: TSelectAddrType) => {
   const setAddrTypeAndScrollDown = (addrt: string) => {
     setAddrType(addrt)
     scroll(prefixRef)
   }
+
+  const f = useTranslations('Form')
+
+  const translate = {
+    addrtypeTitle: f('addrtype-title'),
+    legacyTitle: f('addrTypeSelection.legacy-title'),
+    legacyText: f('addrTypeSelection.legacy-text'),
+    nestedSegwitTitle: f('addrTypeSelection.nested-segwit-title'),
+    nestedSegwitText: f('addrTypeSelection.nested-segwit-text'),
+    nativeSegwitTitle: f('addrTypeSelection.native-segwit-title'),
+    nativeSegwitText: f('addrTypeSelection.native-segwit-text'),
+  };
 
   return (
     <>

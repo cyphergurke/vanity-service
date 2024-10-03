@@ -30,9 +30,11 @@
     },
     "price": {
       "price": "Price",
-      "addr-type": "Address type",
-      "prefix-lenght": "Prefixlength",
-      "price-title": "Preis Calculation",
+      "taxPrice": "taxes",
+      "priceWithtax": "incl. taxes",
+      "addrType": "Address type",
+      "prefixLenght": "Prefixlength",
+      "priceTitle": "Preis Calculation",
       "yes": "Yes",
       "no": "No"
     },

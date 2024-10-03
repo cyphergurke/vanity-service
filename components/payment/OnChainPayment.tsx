@@ -3,9 +3,12 @@
 import React, { useEffect, useState } from 'react'
 import QRCode from "qrcode"
 import Image from 'next/image'
+import { Button } from '../ui/button'
+import { copyText } from '@/lib/utils'
 
 const OnChainPayment = ({ invoice }: any) => {
     const [invoiceQR, setInvoiceQR] = useState<string | null>(null)
+
 
     const genInvoiceQRCodes = async () => {
         if (!invoice) return
@@ -22,7 +25,10 @@ const OnChainPayment = ({ invoice }: any) => {
     return (
         <div className='flex flex-col text-center justify-center items-center'>
             {invoiceQR ? (
-                <Image src={invoiceQR} alt="lnInvoice" width={350} height={350} />
+                <>
+                    <Image src={invoiceQR} alt="lnInvoice" width={350} height={350} />
+                    <Button onClick={() => copyText(invoice)} >Copy Invoice</Button>
+                </>
             ) : (
                 <div className="spinner w-[60px] h-[60px]  mx-auto my-auto"></div>
             )}

@@ -15,7 +15,7 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import Paypal from "./PaypalPayment"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import LnPayment from "./LnPayment"
 import OnChainPayment from "./OnChainPayment"
 import axios from "axios"
