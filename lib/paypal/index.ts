@@ -5,7 +5,6 @@ import checkoutNodeJssdk from '@paypal/checkout-server-sdk'
 const configureEnvironment = function () {
   const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? ''
   const clientSecret = process.env.PAYPAL_SECRET ?? ''
-  console.log(process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID)
   if (!clientId || !clientSecret) {
     console.log("PaymentSecret not set")
   }

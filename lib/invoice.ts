@@ -131,11 +131,10 @@ export const generateInvoicePDF = async (invoiceData: invoiceDataT) => {
     formData.append("file", pdfBlob, `Rechnung_${invoiceData.invoiceNumber}.pdf`);
 
     try {
-        const response = await fetch('/api/invoice', {
+        await fetch('/api/invoice', {
             method: 'POST',
             body: formData,
         });
-        console.log(response)
         doc.save(`Rechnung_${invoiceNumber}.pdf`);
     } catch (error) {
         alert("Fehler beim Speichern der PDF:" + error);

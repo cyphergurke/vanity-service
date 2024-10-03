@@ -9,7 +9,6 @@ export async function POST(req: NextRequest) {
         const price = await calculatePrice(data.addrtype, prefixLenght, data.casesensitive)
 
         const orderData = data;
-        console.log(price)
         orderData.price = price.price
         orderData.priceIncltaxes = price.priceIncltaxes
         if (price.price === 0) {
