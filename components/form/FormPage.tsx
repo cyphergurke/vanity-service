@@ -12,6 +12,7 @@ import Prefix from '../cards/Prefix'
 import SelectAddrType from './SelectAddrType'
 import axios from 'axios'
 import { isValidBitcoinPublicKey } from '@/lib/keypair'
+import { useLocale } from 'next-intl'
 
 export type TSectionRef = {
     selectAddrType: RefObject<HTMLDivElement>,
@@ -32,7 +33,7 @@ const FormPage = () => {
     const [submitting, setSubmitting] = useState(false)
 
     const router = useRouter()
-    const pathName = usePathname()
+    const locale = useLocale()
 
     const sectionRefs: TSectionRef = {
         selectAddrType: React.createRef<HTMLDivElement>(),
@@ -61,7 +62,7 @@ const FormPage = () => {
         }
         const data = {
             _id: id,
-            language: pathName,
+            language: locale,
             addrtype: addrType,
             prefixstr: prefixStr,
             casesensitive: cs,
@@ -80,7 +81,7 @@ const FormPage = () => {
             const orderData: any = await genOrderData(id)
             const res: any = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/order/create`, orderData)
             if (res.data.created) {
-                router.push(`${pathName}/order/checkout/${id}`)
+                router.push(`${locale}/order/checkout/${id}`)
             }
         } catch (error: any) {
             console.log(error.message)
@@ -158,7 +159,7 @@ const FormPage = () => {
                                     hover:bg-green-600 hover:shadow-white hover:shadow-md active
                                      focus:border-white focus:border-2 focus:shadow-white focus:shadow-lg '
                                     disabled={true}>
-                                    {pathName === '/en' ? 'Send Booking' : 'Bestellung wird gesendet'}
+                                    {locale === 'en' ? 'Send Booking' : 'Bestellung wird gesendet'}
                                     <div className="spinner mx-auto w-4  h-4  my-auto"></div>
                                 </Button>
                             ) : (
@@ -168,7 +169,7 @@ const FormPage = () => {
                                         focus:border-white focus:border-2   focus:shadow-white focus:shadow-lg '
                                     disabled={!addrType || !prefixStr || !pubKey || !email}
                                     onClick={() => onsubmit()}>
-                                    {pathName === '/en' ? 'Calculate' : 'Berechnen'}
+                                    {locale === 'en' ? 'Calculate' : 'Berechnen'}
                                 </Button>
                             )}
                         </section>

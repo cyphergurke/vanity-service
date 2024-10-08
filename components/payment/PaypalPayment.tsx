@@ -2,13 +2,14 @@
 
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import axios from 'axios'
-import { usePathname, useRouter } from 'next/navigation'
+import { useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 const Paypal = ({ order }: any) => {
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter()
-    const pathname = usePathname()
+    const locale = useLocale()
 
     const paypalCreateOrder = async () => {
         try {
@@ -30,8 +31,7 @@ const Paypal = ({ order }: any) => {
                 order_price: data.order_price
             })
             if (response.data.message === "COMPLETED") {
-                const langpath = pathname.slice(0, 3)
-                router.push(`${langpath}/order/paid/${order._id}`)
+                router.push(`${locale}/order/paid/${order._id}`)
                 return true
             }
         } catch (err: any) {
