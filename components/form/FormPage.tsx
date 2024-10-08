@@ -1,18 +1,18 @@
 'use client'
 
 import React, { RefObject, useEffect, useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Button } from '../ui/button'
-import Contact from '../cards/Contact'
-import PubKey from '../cards/pubkey/PubKey'
-import PriceCalculation from '../cards/PriceCalculation'
-import Prefix from '../cards/Prefix'
+import PubKey from './cards/pubkey/PubKey'
+import PriceCalculation from './cards/PriceCalculation'
+import Prefix from './cards/Prefix'
 import SelectAddrType from './SelectAddrType'
 import axios from 'axios'
 import { isValidBitcoinPublicKey } from '@/lib/keypair'
 import { useLocale } from 'next-intl'
+import DeliveryContact from './cards/DeliveryContact'
 
 export type TSectionRef = {
     selectAddrType: RefObject<HTMLDivElement>,
@@ -147,7 +147,7 @@ const FormPage = () => {
                             className="flex flex-col justify-center  items-center"
 
                         >
-                            <Contact
+                            <DeliveryContact
                                 setEmail={setEmail}
                                 setLnUrl={setLnUrl}
                             />

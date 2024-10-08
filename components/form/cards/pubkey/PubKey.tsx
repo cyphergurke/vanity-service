@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Input } from '../../ui/input';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../ui/card';
+import { Input } from '../../../ui/input';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../../ui/card';
 
 import { PubKeyDialog } from './Dialog';
 import QrDialog from './QrDialog';

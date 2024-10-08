@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Input } from '../ui/input';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import { Input } from '../../ui/input';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../ui/card';
 
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import { useTranslations } from 'next-intl';
 
 
@@ -13,7 +13,7 @@ type TContact = {
     setLnUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Contact = ({ setEmail, setLnUrl }: TContact) => {
+const DeliveryContact = ({ setEmail, setLnUrl }: TContact) => {
     const [option, setOption] = useState<'email' | 'lnurl'>()
 
     const c = useTranslations('Form.contact')
@@ -75,4 +75,4 @@ const Contact = ({ setEmail, setLnUrl }: TContact) => {
     )
 }
 
-export default Contact
+export default DeliveryContact

@@ -28,7 +28,7 @@ type TPubKeyDialog = {
 
 export function PubKeyDialog({ translate, setPubKey }: TPubKeyDialog) {
   const [entropy, setEntropy] = useState('Bitcoin Satoshi Nakamoto')
-  const [keypair, setKeypair] = useState<any>() // <{ privkey: string, pubkey: string } | null>
+  const [keypair, setKeypair] = useState<any>()
   const [progress, setProgress] = useState<number>(0);
   const [generateKeypair, setGenerateKeypair] = useState(false)
   const targetProgress = 100;

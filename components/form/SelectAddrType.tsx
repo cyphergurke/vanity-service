@@ -2,7 +2,7 @@
 
 import React, { RefObject } from 'react'
 
-import AddrTypeCard from '../cards/AddrTypeCard';
+import AddrTypeCard from './cards/AddrTypeCard';
 import { paragraphs } from '@/lib/formatText';
 import { useTranslations } from 'next-intl';
 

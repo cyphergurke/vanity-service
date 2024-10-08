@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Input } from '../ui/input'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card'
-import { Checkbox } from '../ui/checkbox'
-import { Label } from '../ui/label'
+import { Input } from '../../ui/input'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../ui/card'
+import { Checkbox } from '../../ui/checkbox'
+import { Label } from '../../ui/label'
 import { useTranslations } from 'next-intl'
 
 type TPrefix = {
