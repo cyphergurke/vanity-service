@@ -13,7 +13,7 @@ const Invoice = ({ orderstr }: any) => {
     const i = useTranslations("Invoice")
 
     return (
-        <Tabs defaultValue="privat" className="md:w-1/3 w-full m-5" >
+        <Tabs defaultValue="privat" className="lg:w-1/3 md:w-2/3 w-full p-5 m-5" >
             <p className="text-2xl text-white text-center pb-10">{i('title')}</p>
             <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="privat">Privat</TabsTrigger>

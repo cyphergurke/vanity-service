@@ -13,9 +13,7 @@ const OrderStatus = ({ orderstr }: any) => {
     const [order, setOrder] = useState<IOrder>(JSON.parse(orderstr))
 
     const locale = useLocale()
-
     const s = useTranslations('Status')
-
 
     useEffect(() => {
         const checkProgress = async () => {
@@ -38,12 +36,10 @@ const OrderStatus = ({ orderstr }: any) => {
         };
     }, [order._id]);
 
-
-
     return (
         <div className='w-[90%] md:w-2/3 lg:w-1/2  bg-blue-gradient text-white p-4 rounded-lg shadow-lg shadow-black' >
             <p className='p-2 text-xl'>
-                Vielen Dank für Ihre Bestellung!
+                {s('thankYou')}
             </p>
             <p className='flex justify-between p-2 '>
                 <b className="whitespace-nowrap pr-1">Orderid: </b>
@@ -82,13 +78,18 @@ const OrderStatus = ({ orderstr }: any) => {
                 <b className="whitespace-nowrap pr-1">vanity address: </b>
                 <span className="break-all text-right flex flex-col-reverse"> {order.vanityAddr}</span>
             </p>
-            <div className="flex gap-2 justify-center items-center mt-6">
+            <div className=" flex flex-col md:flex-row  gap-2 justify-center items-center mt-6">
+                <Link href={`/${locale}/order/invoice/${order._id}`}>
+                    <Button variant="secondary">
+                        {s('createInvoice')}
+                    </Button>
+                </Link>
                 {order.partialPriv &&
                     <>
                         <QrDialog dataUrl={order.partialPriv} />
                         <Link href={`https://vanity-split-key-merge.bitcoin-uni.de/${order.vanityAddr}/${order.partialPriv}`}>
                             <Button className='bg-green-700' >
-                                Merge Partial Keys
+                                {s('mergePartialKeys')}
                             </Button>
                         </Link>
                     </>
@@ -96,15 +97,10 @@ const OrderStatus = ({ orderstr }: any) => {
                 {order.status === "PENDING" &&
                     <Link href={`/${locale}/order/checkout/${order._id}`}>
                         <Button className='bg-green-700'>
-                            Jetzt bezahlen
+                            {s('payNow')}
                         </Button>
                     </Link>
                 }
-                <Link href={`/${locale}/order/invoice/${order._id}`}>
-                    <Button variant="secondary">
-                        Rechnung erstellen
-                    </Button>
-                </Link>
             </div>
         </div>
     )

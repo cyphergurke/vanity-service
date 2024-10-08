@@ -150,7 +150,7 @@ const B2BInvoice = ({ order }: any) => {
 
             <div className="flex justify-between">
                 <Button type="submit" className="btn btn-primary" >{i('submitbtn')}</Button >
-                <Link href={`/${locale}/order/paid/${order._id}`}>
+                <Link href={`/${locale}/order/status/${order._id}`}>
                     <Button className="bg-green-700" >{i('privat.continuebtn')}</Button >
                 </Link>
 

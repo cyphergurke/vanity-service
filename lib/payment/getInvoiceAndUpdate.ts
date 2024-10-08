@@ -36,8 +36,8 @@ export const getBTCInvoice = async (id: string, amount: number) => {
                 amount: amount,
                 currency: 'EUR',
                 description: `Vanity Address Order: ${id}`,
-               /*  customer_name: 'David Witten',
-                customer_email: 'david@bitcoin-uni.de', */
+                /*  customer_name: 'David Witten',
+                 customer_email: 'david@bitcoin-uni.de', */
                 order_id: id,
                 callback_url: `${process.env.NEXT_PUBLIC_API_URL}/api/btc/paid/${id}`,
                 //  success_url: `${process.env.NEXT_PUBLIC_API_URL}/api/btc/paid/${id}`,

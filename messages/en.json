@@ -182,5 +182,11 @@
       "vatIdZod": "Vat-Id is required"
     },
     "submitbtn": "Generate Invoice"
+  },
+  "Status": {
+    "thankYou": "Thank you for your order ",
+    "mergePartialKeys": " Merge Partial Keys",
+    "payNow": "Pay now",
+    "createInvoice": "Create Invoice"
   }
 }

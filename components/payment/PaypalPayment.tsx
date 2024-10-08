@@ -31,7 +31,7 @@ const Paypal = ({ order }: any) => {
                 order_price: data.order_price
             })
             if (response.data.message === "COMPLETED") {
-                router.push(`${locale}/order/paid/${order._id}`)
+                router.push(`${locale}/order/status/${order._id}`)
                 return true
             }
         } catch (err: any) {
@@ -50,7 +50,7 @@ const Paypal = ({ order }: any) => {
                     }}
                 >
                     {isLoading && (
-                        <div className="spinner w-[60px] h-[60px]  mx-auto my-auto"></div>
+                        <div className="spinner w-[60px] h-[60px] my-10  mx-auto  "></div>
                     )}
                     <PayPalButtons
                         style={{

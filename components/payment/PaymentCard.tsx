@@ -45,7 +45,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
             );
 
             if (btcpayment.data.chargeInfo.status === 'paid' && order.price === 0) {
-                router.push(`/${locale}/order/paid/${order._id}`);
+                router.push(`/${locale}/order/status/${order._id}`);
                 clearInterval(checkPaymentInterval);
             }
         };
@@ -62,7 +62,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
             return;
         }
         if (payment && payment.status === 'paid' && order.price === 0) {
-            router.push(`/${locale}/order/paid/${order._id}`);
+            router.push(`/${locale}/order/status/${order._id}`);
             return;
         }
     }, [payment, order._id, locale, router]);
@@ -71,7 +71,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
     return (
         <>
             {paymentstr && orderstr && payment.status !== "paid" ? (
-                <Tabs defaultValue="lightning" className="lg:w-1/3 md:w-1/2 w-full p-5 m-5" >
+                <Tabs defaultValue="lightning" className="lg:w-1/3 md:w-2/3 w-full p-5 m-5" >
                     <p className="text-2xl text-white text-center pb-10">{c('title')}</p>
                     <TabsList className="grid w-full grid-cols-3">
                         <TabsTrigger value="lightning">Lightning</TabsTrigger>

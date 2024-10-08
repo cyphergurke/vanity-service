@@ -183,5 +183,11 @@
       "vatIdZod": "Die Ust-IdNr ist erforderlich"
     },
     "submitbtn": "Rechnung erstellen"
+  },
+  "Status": {
+    "thankYou": "Vielen Dank für Ihre Bestellung",
+    "mergePartialKeys": "Geteilte Schlüssel Zusammenfügen",
+    "payNow": "Jetzt bezahlen",
+    "createInvoice": "Rechnung erstellen"
   }
 }
