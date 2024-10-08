@@ -41,6 +41,7 @@
     },
     "pubkey": {
       "title": "3. Eingabe des öffentlichen Schlüssels",
+      "description": "Für die Erstellung einer Vanity Adresse benötigen Sie ein Schüsselpaar, dessen Öffentlicher Schlüssel für die Berechnung der Vanity Adresse verwendet wird.",
       "text": "Unkomprimierte sowie comprimierte Public Keys akzeptiert",
       "dialog-btn": "Woher erhalte ich den öffentlichen Schlüssel?",
       "aboutpubkey-title": "Was ist ein öffentlicher Schlüssel?",
@@ -138,7 +139,10 @@
     "amount": "Betrag",
     "orderDetails": "Details",
     "price": "Preis",
-    "tax": "Mwst"
+    "tax": "Mwst",
+    "copyPaymentRequest": "Zahlungsanforderung kopieren",
+    "paymentRequestCopied": "Zahlungsanforderung in Zwischenablage kopiert!",
+    "openWallet": "Brieftasche Öffnen"
   },
   "Invoice": {
     "title": "Rechnung erstellen",

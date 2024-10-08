@@ -5,10 +5,13 @@ import QRCode from "qrcode"
 import Image from 'next/image'
 import { Button } from '../ui/button'
 import { copyText } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import { toast } from 'sonner'
 
 const OnChainPayment = ({ invoice }: any) => {
     const [invoiceQR, setInvoiceQR] = useState<string | null>(null)
-
+    const f = useTranslations('Checkout')
 
     const genInvoiceQRCodes = async () => {
         if (!invoice) return
@@ -27,7 +30,16 @@ const OnChainPayment = ({ invoice }: any) => {
             {invoiceQR ? (
                 <>
                     <Image src={invoiceQR} alt="lnInvoice" width={350} height={350} />
-                    <Button onClick={() => copyText(invoice)} >Copy Invoice</Button>
+                    <div className='flex flex-col gap-4'>
+                        <Button onClick={() => {
+                            copyText(invoice.uri); toast("", {
+                                description: f("paymentRequestCopied")
+                            })
+                        }} >{f("copyPaymentRequest")}</Button>
+                        <Link href={invoice.uri} >
+                            <Button  >{f("openWallet")} </Button>
+                        </Link>
+                    </div>
                 </>
             ) : (
                 <div className="spinner w-[60px] h-[60px]  mx-auto my-auto"></div>

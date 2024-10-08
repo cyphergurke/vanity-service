@@ -30,8 +30,8 @@
     },
     "price": {
       "price": "Price",
-      "taxPrice": "taxes",
-      "priceWithtax": "incl. taxes",
+      "taxPrice": "VAT",
+      "priceWithtax": "incl. VAT",
       "addrType": "Address type",
       "prefixLenght": "Prefixlength",
       "priceTitle": "Preis Calculation",
@@ -40,6 +40,7 @@
     },
     "pubkey": {
       "title": "3. Enter the public key",
+      "description": "To create a vanity address, you need a key pair whose public key is used to calculate the vanity address.",
       "text": "Uncompressed and compressed public keys accepted",
       "dialog-btn": "Where to get the public key from?",
       "aboutpubkey-title": "What is a public key?",
@@ -137,7 +138,10 @@
     "amount": "Amout",
     "orderDetails": "Order details",
     "price": "Price",
-    "tax": "Taxes"
+    "tax": "VAT",
+    "copyPaymentRequest": "Copy Payment Request",
+    "paymentRequestCopied": "Payment Request copied to clipboard!",
+    "openWallet": "Open Wallet"
   },
   "Invoice": {
     "title": "Generate Invoice",

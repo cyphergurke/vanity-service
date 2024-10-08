@@ -27,7 +27,7 @@ export interface IPayment extends Document {
 }
 
 export interface IOrder extends Document {
-    _id: string;
+    _id?: string;
     addrtype: string;
     prefixstr: string;
     casesensitive: number;

@@ -26,6 +26,7 @@ const PubKey = ({ pubKey, setPubKey, pubkeyErr }: TPubKey) => {
   const f = useTranslations('Form')
   const translate = {
     pubkeyTitle: f('pubkey.title'),
+    description: f('pubkey.description'),
     pubkeyText: f('pubkey.text'),
     dialogBTN: f('pubkey.dialog-btn'),
     aboutPubkeyTitle: f('pubkey.aboutpubkey-title'),

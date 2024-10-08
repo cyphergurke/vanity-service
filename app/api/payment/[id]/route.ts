@@ -65,7 +65,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
                     }
                 });
                 await updateOrderPayment(
-                    order._id,
+                    id,
                     response.data.payment_hash,
                     response.data.payment_request,
                     response.data.lnurl_response,
