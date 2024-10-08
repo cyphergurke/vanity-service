@@ -135,9 +135,10 @@ export async function calculatePrice(_addresstype: string, praefixLength: number
 
 
   const price = praefix_price + Math.round(praefix_cs_price)
-  const taxes = price * 0.19
+  const priceIncltaxes = price * 0.19
+
   return {
     price: price,
-    priceIncltaxes: taxes
+    priceIncltaxes: priceIncltaxes
   }
 }

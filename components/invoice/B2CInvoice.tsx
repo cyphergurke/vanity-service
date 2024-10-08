@@ -56,7 +56,6 @@ const B2BInvoice = ({ order }: any) => {
 
 
     const onSubmit = (data: invoiceFormT) => {
-        console.log("response", data)
         generateInvoicePDF({
             customerName: data.name,
             customerAddress: data.address,

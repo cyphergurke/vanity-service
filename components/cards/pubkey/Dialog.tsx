@@ -99,10 +99,11 @@ export function PubKeyDialog({ translate, setPubKey }: TPubKeyDialog) {
         <div className="max-w-full">
           <DialogHeader>
             <DialogTitle>{translate.dialogBTN}</DialogTitle>
+            {/* <WebcamCapture setEntropy={setEntropy} setProgress={setProgress}/> */}
             <DialogDescription>
-              <PubKeyAccordion translate={translate} />
-              {/* <WebcamCapture setEntropy={setEntropy} setProgress={setProgress}/> */}
+              {translate.description}
             </DialogDescription>
+            <PubKeyAccordion translate={translate} />
           </DialogHeader>
           {generateKeypair && (
             <>
@@ -166,11 +167,6 @@ export function PubKeyDialog({ translate, setPubKey }: TPubKeyDialog) {
                     onClick={() => setPubKey(keypair.pubKey)}
                   >
                     {translate.pubkeyTakethisPubKeyBTN}
-                  </Button>
-                </DialogTrigger>
-                <DialogTrigger asChild>
-                  <Button className="m-2">
-                    Okay
                   </Button>
                 </DialogTrigger>
               </>
