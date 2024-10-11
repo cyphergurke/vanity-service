@@ -16,6 +16,8 @@ import LanguageToggle from "./LanguageToggle"
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { navItems } from "@/data"
+import Image from "next/image";
+import logo from '../../public/favicon/android-chrome-192x192.png'
 
 export function MobileNavBar() {
     const [isVisible, setIsVisible] = useState(true);
@@ -62,12 +64,23 @@ export function MobileNavBar() {
 
     return (
         <motion.div
-            className={`fixed top-0 right-0 w-full h-16 z-50 flex items-center transition-all duration-1000 ${hasBackground ? "bg-black/50 backdrop-blur-md" : "bg-transparent"
-                }`}
+            className={`fixed top-0 right-0 w-full h-16 z-50 flex items-center transition-all duration-1000
+                ${hasBackground ? "bg-black/50 backdrop-blur-md h-16" : "bg-transparent "}`}
             initial={{ y: "-100%" }}
             animate={{ y: isVisible ? "0%" : "-100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
         >
+            <div className="ml-4 flex flex-row items-center gap-2">
+                <Link href="/" aria-label='Home - Bitcoin Uni Vanity Service'>
+                    <Image
+                        src={logo}
+                        alt=""
+                        width={50} height={50}
+                        className='rounded-full transition-all duration-500 hover:opacity-70 '
+                    />
+                    <p className=' hidden lg:block font-semibold text-xl text-white'>Bitcoin Uni - Vanity Service</p>
+                </Link>
+            </div>
             <Sheet open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
                 <SheetTrigger className="right-2 fixed ">
                     <span

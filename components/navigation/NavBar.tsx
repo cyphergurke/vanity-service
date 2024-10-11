@@ -7,13 +7,12 @@ import logo from '../../public/favicon/android-chrome-192x192.png'
 import { MobileNavBar } from './MobileNavBar'
 import { Link } from '@/navigation'
 import LanguageToggle from './LanguageToggle'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { navItems } from '@/data'
 
 
 
 const NavBar = () => {
-    const locale = useLocale()
 
     const h = useTranslations('Navigation');
     const translate = {
@@ -26,8 +25,12 @@ const NavBar = () => {
 
     return (
         <div className='flex flex-row h-20 items-center justify-between w-full '>
-            <Link href="/" aria-label='Home - Bitcoin Uni Vanity Service'>
-                <div className="ml-4 flex flex-row items-center gap-2">
+
+            <div className="ml-4    hidden  md:lg:block ">
+                <Link
+                    href="/"
+                    aria-label='Home - Bitcoin Uni Vanity Service'
+                    className='flex flex-row items-center gap-2'>
                     <Image
                         src={logo}
                         alt=""
@@ -35,8 +38,9 @@ const NavBar = () => {
                         className='rounded-full transition-all duration-500 hover:opacity-70 '
                     />
                     <p className=' hidden lg:block font-semibold text-xl text-white'>Bitcoin Uni - Vanity Service</p>
-                </div>
-            </Link>
+                </Link>
+            </div>
+
             <div className=' hidden md:block mx-auto text-center'>
                 <div className='flex flex-row gap-5'>
                     {translatedNavItems.map((navItem: any, idx: number) => (
@@ -57,6 +61,7 @@ const NavBar = () => {
                 <LanguageToggle />
             </div>
             <div className='mr-4   md:hidden'>
+
                 <MobileNavBar />
             </div>
         </div>
