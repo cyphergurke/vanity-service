@@ -31,7 +31,7 @@ const Paypal = ({ order }: any) => {
                 order_price: data.order_price
             })
             if (response.data.message === "COMPLETED") {
-                router.push(`${locale}/order/status/${order._id}`)
+                router.push(`/${locale}/order/invoice/${order._id}`)
                 return true
             }
         } catch (err: any) {
@@ -45,7 +45,7 @@ const Paypal = ({ order }: any) => {
                 <PayPalScriptProvider
                     options={{
                         'clientId': process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
-                        'currency': 'USD',
+                        'currency': 'EUR',
                         'intent': 'capture'
                     }}
                 >

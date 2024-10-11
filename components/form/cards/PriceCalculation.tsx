@@ -49,7 +49,7 @@ const PriceCalculation = ({ addrType, prefixLen, caseSensitive, setPrice, price 
                     <p>{p("price.price")}</p>
                 </div>
                 <div className='flex-col'>
-                    <p>{price}</p>
+                    <p>{price}€</p>
                 </div>
             </div>
             <div className='flex flex-row justify-between'>
@@ -57,7 +57,7 @@ const PriceCalculation = ({ addrType, prefixLen, caseSensitive, setPrice, price 
                     <p>{p("price.taxPrice")}</p>
                 </div>
                 <div className='flex-col'>
-                    <p>{taxPrice}</p>
+                    <p>{taxPrice}€</p>
                 </div>
             </div>
             <div className='flex flex-row justify-between'>
@@ -65,7 +65,7 @@ const PriceCalculation = ({ addrType, prefixLen, caseSensitive, setPrice, price 
                     <p>{p("price.priceWithtax")}</p>
                 </div>
                 <div className='flex-col'>
-                    <p>{price ? taxPrice + price : 0}</p>
+                    <p>{price ? taxPrice + price : 0}€</p>
                 </div>
             </div>
         </div >

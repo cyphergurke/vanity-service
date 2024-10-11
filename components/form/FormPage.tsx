@@ -86,7 +86,7 @@ const FormPage = () => {
             const orderData: any = await genOrderData(id)
             const res: any = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/order/create`, orderData)
             if (res.data.created) {
-                router.push(`${locale}/order/checkout/${id}`)
+                router.push(`/${locale}/order/checkout/${id}`)
             }
         } catch (error: any) {
             console.log(error.message)
