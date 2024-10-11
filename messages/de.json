@@ -7,7 +7,6 @@
     "home": "Home",
     "about": "Über uns",
     "contact": "Kontakt",
-    "legal": "Legal",
     "faq": "FAQ",
     "guide": "Anleitung"
   },
@@ -63,7 +62,8 @@
     "contact": {
       "title": "4. Email Adresse oder LNURL Eingabe",
       "text": "Zum Empfangen der Vanity Adresse und des Partial Private Key"
-    }
+    },
+    "calculate": "Berechnen"
   },
   "Contact": {
     "title": "Kontakt",
@@ -189,5 +189,14 @@
     "mergePartialKeys": "Geteilte Schlüssel Zusammenfügen",
     "payNow": "Jetzt bezahlen",
     "createInvoice": "Rechnung erstellen"
+  },
+  "Cookie": {
+    "title": "Privatsphäre Einstellungen",
+    "subTitle": "Wir respektieren Ihre Privatsphäre, deshalb verwenden wir keine drittanbieter Cookies, der einzige Cookie der abgelegt wird ist die Spracheinstellung, es werden dazu keine geolocationen erhoben.",
+    "privacyText": "Bei einer Bestellung wird Ihre E-mail Adresse solange gespeichert, bis die Vanity Adresse erfolgreich versendet wurde. Mit dem absenden einer Bestellung willigen Sie der DSGVO ein.",
+    "agb": "AGB - Allgemeine Geschäftsbedingungen",
+    "dsgvo": "DSGVO - Datenschutzverordnung",
+    "accepting": "Akzeptieren Sie die",
+    "btnTitle": "Okay"
   }
 }

@@ -11,8 +11,11 @@ import Prefix from './cards/Prefix'
 import SelectAddrType from './SelectAddrType'
 import axios from 'axios'
 import { isValidBitcoinPublicKey } from '@/lib/keypair'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import DeliveryContact from './cards/DeliveryContact'
+import Link from 'next/link'
+import { Checkbox } from '../ui/checkbox'
+import { Label } from '../ui/label'
 
 export type TSectionRef = {
     selectAddrType: RefObject<HTMLDivElement>,
@@ -31,6 +34,8 @@ const FormPage = () => {
     const [email, setEmail] = useState('')
     const [lnurl, setLnUrl] = useState('')
     const [submitting, setSubmitting] = useState(false)
+
+    const f = useTranslations()
 
     const router = useRouter()
     const locale = useLocale()
@@ -96,6 +101,13 @@ const FormPage = () => {
         const validate = isValidBitcoinPublicKey(pubKey)
         setPubkeyErr(validate)
     }, [pubKey])
+
+
+    const [agbChecked, setAgbChecked] = useState(false)
+    const [dsgvoChecked, setDsgvoChecked] = useState(false)
+
+    const isButtonEnabled = agbChecked && dsgvoChecked && addrType && prefixStr && pubKey && email
+
 
     return (
         <>
@@ -163,14 +175,47 @@ const FormPage = () => {
                                     <div className="spinner mx-auto w-4  h-4  my-auto"></div>
                                 </Button>
                             ) : (
-                                <Button
-                                    className='flex gap-2 bg-green-700 transition-all duration-300
+                                <div className=''>
+                                    <div className='flex flex-col space-y-2  bg-white p-2 rounded-md  '>
+                                        <p className=''>
+                                            {f('Cookie.accepting')}:
+                                        </p>
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                id="agb"
+                                                checked={agbChecked}
+                                                onCheckedChange={(checked) => setAgbChecked(checked === true)}
+                                            />
+                                            <Label htmlFor="agb" className="text-sm font-medium text-blue-600 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                                <Link href={`/${locale}/legal/agb`} target='_blank'>
+                                                    {f('Cookie.agb')}
+                                                </Link>
+                                            </Label>
+                                        </div>
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                id="dsgvo"
+                                                checked={dsgvoChecked}
+                                                onCheckedChange={(checked) => setDsgvoChecked(checked === true)}
+                                            />
+                                            <Label htmlFor="dsgvo" className="text-sm font-medium text-blue-600 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                                <Link href={`/${locale}/legal/dsgvo`} target='_blank'>
+                                                    {f('Cookie.dsgvo')}
+                                                </Link>
+                                            </Label>
+                                        </div>
+                                    </div>
+                                    <div className='flex py-5 justify-center'>
+                                        <Button
+                                            className='flex gap-2 bg-green-700 transition-all duration-300
                                         hover:bg-green-600 hover:shadow-white hover:shadow-md active
                                         focus:border-white focus:border-2   focus:shadow-white focus:shadow-lg '
-                                    disabled={!addrType || !prefixStr || !pubKey || !email}
-                                    onClick={() => onsubmit()}>
-                                    {locale === 'en' ? 'Calculate' : 'Berechnen'}
-                                </Button>
+                                            disabled={!addrType || !prefixStr || !pubKey || !email || !isButtonEnabled}
+                                            onClick={() => onsubmit()}>
+                                            {f('Form.calculate')}
+                                        </Button>
+                                    </div>
+                                </div>
                             )}
                         </section>
 
