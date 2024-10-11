@@ -6,6 +6,7 @@ import Footer from "@/components/navigation/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import CookieConsent from "@/components/CookieConsent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,6 +40,7 @@ export default async function LocaleLayout({
             <div className="flex-grow">
               {children}
             </div>
+            <CookieConsent />
             <Toaster />
             <Footer />
           </NextIntlClientProvider>
