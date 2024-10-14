@@ -37,6 +37,7 @@ export interface IOrder extends Document {
     email?: string;
     lnurl?: string;
     price: number;
+    vatPrice: number;
     priceIncltaxes: number;
     payment?: IPayment;
     status: paymentStatusEnum;
@@ -122,6 +123,7 @@ const OrderSchema = new Schema({
     lnurl: { type: String, required: false },
     price: { type: Number, default: 0, required: false },
     priceIncltaxes: { type: Number, default: 0, required: false },
+    vatPrice: { type: Number, default: 0, required: false },
     payment: {
         type: PaymentSchema,
         required: false

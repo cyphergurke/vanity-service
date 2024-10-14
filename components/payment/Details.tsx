@@ -1,15 +1,16 @@
 "use client"
 
-import { IOrder } from '@/lib/actions/order.model'
+import { IOrder, IPayment } from '@/lib/actions/order.model'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 
-const Details = ({ order }: { order: IOrder }) => {
+const Details = ({ order, payment }: { order: IOrder, payment?: IPayment }) => {
     const [dateTime, setDateTime] = useState<{ date: string; time: string }>({
         date: '',
         time: '',
     });
     const c = useTranslations('Checkout')
+    console.log(payment)
 
     useEffect(() => {
         const date = new Date(order.createdAt).toLocaleDateString();
@@ -34,7 +35,14 @@ const Details = ({ order }: { order: IOrder }) => {
             <hr></hr>
             <p className="flex justify-between">
                 <strong>{c('amount')}:</strong> {order.price + order.price * 0.19}€
+                {payment && (
+                    <>
+                        {" | "}
+                        {payment && JSON.stringify(payment.amount)} Sats
+                    </>
+                )}
             </p>
+
         </div>
     )
 }

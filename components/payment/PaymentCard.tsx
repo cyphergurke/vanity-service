@@ -87,7 +87,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-2">
-                                <Details order={order} />
+                                <Details order={order} payment={payment} />
                                 {payment && payment.lightning_invoice &&
                                     <LnPayment invoice={payment.lightning_invoice} />
                                 }
@@ -106,7 +106,7 @@ const PaymentCard = ({ paymentstr, orderstr }: TPaymentCard) => {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-2">
-                                <Details order={order} />
+                                <Details order={order} payment={payment} />
                                 {payment && payment.lightning_invoice &&
                                     <OnChainPayment invoice={payment} />
                                 }

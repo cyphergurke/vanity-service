@@ -12,7 +12,9 @@ type TPriceCalculation = {
     setPrice: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 const PriceCalculation = ({ addrType, prefixLen, caseSensitive, setPrice, price }: TPriceCalculation) => {
-    const [taxPrice, setTaxPrice] = useState<number>(0)
+    const [vatPrice, setVatPrice] = useState<number>(0)
+    const [priceIncltaxes, setPriceIncltaxes] = useState<number>(0)
+
 
     const p = useTranslations('Form')
 
@@ -20,7 +22,8 @@ const PriceCalculation = ({ addrType, prefixLen, caseSensitive, setPrice, price 
         const generatePrice = async () => {
             const newprice = await calculatePrice(addrType, prefixLen, caseSensitive)
             setPrice(newprice.price)
-            setTaxPrice(newprice.priceIncltaxes)
+            setVatPrice(newprice.vatPrice)
+            setPriceIncltaxes(newprice.priceIncltaxes)
         }
         generatePrice()
     }, [addrType, prefixLen, caseSensitive])
@@ -57,7 +60,7 @@ const PriceCalculation = ({ addrType, prefixLen, caseSensitive, setPrice, price 
                     <p>{p("price.taxPrice")}</p>
                 </div>
                 <div className='flex-col'>
-                    <p>{taxPrice}€</p>
+                    <p>{vatPrice}€</p>
                 </div>
             </div>
             <div className='flex flex-row justify-between'>
@@ -65,7 +68,7 @@ const PriceCalculation = ({ addrType, prefixLen, caseSensitive, setPrice, price 
                     <p>{p("price.priceWithtax")}</p>
                 </div>
                 <div className='flex-col'>
-                    <p>{price ? taxPrice + price : 0}€</p>
+                    <p>{price ? priceIncltaxes : 0}€</p>
                 </div>
             </div>
         </div >
