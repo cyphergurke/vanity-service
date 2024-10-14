@@ -67,14 +67,14 @@ export async function POST(req: NextRequest,) {
             port: 465,
             secure: true,
             auth: {
-                user: process.env.EMAIL_ADDRESS,
+                user: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
                 pass: process.env.EMAIL_PASSWORD,
             },
         });
 
         await transporter.sendMail({
-            from: `"Cypherweb Development" <${process.env.EMAIL_ADDRESS}>`,
-            to: process.env.EMAIL_ADDRESS,
+            from: `"Cypherweb Development" <${process.env.NEXT_PUBLIC_EMAIL_ADDRESS}>`,
+            to: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
             subject: subject || `Neue Anfrage von ${name} ${email}: ${subject}`,
             html: htmlContent(name, email, subject, message)
         });

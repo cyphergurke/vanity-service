@@ -11,14 +11,14 @@ const LegalPage = ({ params }: { params: { locale: any } }) => {
                     <h1 className="text-2xl md:lg:text-3xl font-bold">Allgemeine Geschäftsbedingungen der Bitcoin Uni</h1>
                     <div className="flex flex-col pt-7 mb-24 text-left md:text-left lg:text-left">
                         <p>Bitcoin Uni - Vanity Address Service</p>
-                        <p>{process.env.OWNER_NAME}</p>
-                        <p>{process.env.ADDR_STREET}</p>
-                        <p>{process.env.ADDR_ZIP_AND_CITY}</p>
-                        <p>{process.env.PHONE_NUMBER}</p>
-                        <p>{process.env.EMAIL_ADDRESS}</p>
+                        <p>{process.env.NEXT_PUBLIC_OWNER_NAME}</p>
+                        <p>{process.env.NEXT_PUBLIC_ADDR_STREET}</p>
+                        <p>{process.env.NEXT_PUBLIC_ADDR_ZIP_AND_CITY}</p>
+                        <p>{process.env.NEXT_PUBLIC_PHONE_NUMBER}</p>
+                        <p>{process.env.NEXT_PUBLIC_EMAIL_ADDRESS}</p>
                         <br />
                         <p>Umsatzsteuer-Identifikationsnummer (USt-IdNr.):</p>
-                        <p>{process.env.UST_NR}</p>
+                        <p>{process.env.NEXT_PUBLIC_UST_NR}</p>
                     </div>
                     <p>Allgemeine Geschäftsbedingungen der Bitcoin Uni</p>
                     {params.locale === "en" ? <AGB_EN /> : <AGB_DE />}

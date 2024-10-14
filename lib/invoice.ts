@@ -50,15 +50,6 @@ export const generateInvoicePDF = async (invoiceData: invoiceDataT) => {
     const roundedLogoBase64 = await createRoundedImage(logoUrl);
 
 
-    const businessInfo = {
-        name: process.env.NEXT_PUBLIC_BUSINESS_NAME || "Bitcoin Uni",
-        address: process.env.NEXT_PUBLIC_BUSINESS_ADDRESS || "Deine Geschäftsadresse",
-        email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || "kontakt@unternehmen.de",
-        vatId: process.env.NEXT_PUBLIC_BUSINESS_VAT_ID || "DE123456789",
-        phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE || "+49 123 456 7890",
-    };
-
-
     const {
         customerName,
         customerAddress,
@@ -81,11 +72,13 @@ export const generateInvoicePDF = async (invoiceData: invoiceDataT) => {
     doc.text("Rechnung", 20, 20);
 
     doc.setFontSize(12);
-    doc.text(`${businessInfo.name}`, 20, 40);
-    doc.text(`${businessInfo.address}`, 20, 45);
-    doc.text(`E-Mail: ${businessInfo.email}`, 20, 50);
-    doc.text(`Telefon: ${businessInfo.phone}`, 20, 55);
-    doc.text(`USt-IdNr.: ${businessInfo.vatId}`, 20, 60);
+    doc.text(`${process.env.NEXT_PUBLIC_COMPANY_NAME}`, 20, 35);
+    doc.text(`${process.env.NEXT_PUBLIC_POSTFACH}`, 20, 40);
+    doc.text(`${process.env.NEXT_PUBLIC_ADDR_STREET}`, 20, 45);
+    doc.text(`${process.env.NEXT_PUBLIC_ADDR_ZIP_AND_CITY}`, 20, 50);
+    doc.text(`E-Mail: ${process.env.NEXT_PUBLIC_EMAIL_ADDRESS}`, 20, 55);
+    doc.text(`Telefon: ${process.env.NEXT_PUBLIC_PHONE_NUMBER}`, 20, 60);
+    doc.text(`USt-IdNr.: ${process.env.NEXT_PUBLIC_UST_NR}`, 20, 65);
 
     doc.setFontSize(11);
     doc.text(`Rechnungsnummer: ${invoiceNumber}`, 140, 40);

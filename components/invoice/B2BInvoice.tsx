@@ -130,7 +130,7 @@ const B2BInvoice = ({ order }: any) => {
                 }
             </LabelInputContainer >
 
-            <Button type="submit" className="btn btn-primary" >{i('submitbtn')}</Button >
+            <Button type="submit"  >{i('submitbtn')}</Button >
 
         </form >
     );

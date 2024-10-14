@@ -47,15 +47,15 @@ jobs:
           NEXT_PUBLIC_PAYPAL_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}
           PAYPAL_SECRET: ${{ secrets.PAYPAL_SECRET}}
           PAYPAL_SANDBOXURL: ${{ secrets.PAYPAL_SANDBOXURL}}
-          DOMAIN: ${{ secrets.DOMAIN }}
-          OWNER_NAME: ${{ secrets.OWNER_NAME }}
-          COMPANY_NAME: ${{ secrets.COMPANY_NAME }}
-          POSTFACH: ${{ secrets.POSTFACH }}
-          ADDR_STREET: ${{ secrets.ADDR_STREET }}
-          ADDR_ZIP_AND_CITY: ${{ secrets.ADDR_ZIP_AND_CITY }}
-          PHONE_NUMBER: ${{ secrets.PHONE_NUMBER }}
-          UST_NR: ${{ secrets.UST_NR }}
-          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          NEXT_PUBLIC_DOMAIN: ${{ secrets.DOMAIN }}
+          NEXT_PUBLIC_OWNER_NAME: ${{ secrets.OWNER_NAME }}
+          NEXT_PUBLIC_COMPANY_NAME: ${{ secrets.COMPANY_NAME }}
+          NEXT_PUBLIC_POSTFACH: ${{ secrets.POSTFACH }}
+          NEXT_PUBLIC_ADDR_STREET: ${{ secrets.ADDR_STREET }}
+          NEXT_PUBLIC_ADDR_ZIP_AND_CITY: ${{ secrets.ADDR_ZIP_AND_CITY }}
+          NEXT_PUBLIC_PHONE_NUMBER: ${{ secrets.PHONE_NUMBER }}
+          NEXT_PUBLIC_UST_NR: ${{ secrets.UST_NR }}
+          NEXT_PUBLIC_EMAIL_ADDRESS: ${{ secrets.NEXT_PUBLIC_EMAIL_ADDRESS }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           IMAP_MAIL_SERVER_OUT: ${{ secrets.IMAP_MAIL_SERVER_OUT }}
           IMAP_MAIL_SERVER_PORT_OUT: ${{ secrets.IMAP_MAIL_SERVER_PORT_OUT }}       
@@ -71,18 +71,18 @@ jobs:
             echo "NEXT_PUBLIC_PAYPAL_CLIENT_ID=${{ secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}" >> .env.local
             echo "PAYPAL_SECRET=${{ secrets.PAYPAL_SECRET}}" >> .env.local
             echo "PAYPAL_SANDBOXURL=${{ secrets.PAYPAL_SANDBOXURL}}" >> .env.local
-            echo "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" >> .env.local
+            echo "NEXT_PUBLIC_EMAIL_ADDRESS=${{ secrets.NEXT_PUBLIC_EMAIL_ADDRESS }}" >> .env.local
             echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> .env.local
             echo "IMAP_MAIL_SERVER_OUT=${{ secrets.IMAP_MAIL_SERVER_OUT }}" >> .env.local
             echo "IMAP_MAIL_SERVER_PORT_OUT=${{ secrets.IMAP_MAIL_SERVER_PORT_OUT }}" >> .env.local
-            echo "COMPANY_NAME=${{ secrets.COMPANY_NAME }}" >> .env.local
-            echo "DOMAIN=${{ secrets.DOMAIN }}" >> .env.local
-            echo "OWNER_NAME=${{ secrets.OWNER_NAME }}" >> .env.local
-            echo "POSTFACH=${{ secrets.POSTFACH }}" >> .env.local
-            echo "ADDR_STREET=${{ secrets.ADDR_STREET }}" >> .env.local
-            echo "ADDR_ZIP_AND_CITY=${{ secrets.ADDR_ZIP_AND_CITY }}" >> .env.local
-            echo "PHONE_NUMBER=${{ secrets.PHONE_NUMBER }}" >> .env.local
-            echo "UST_NR=${{ secrets.UST_NR }}" >> .env.local
+            echo "NEXT_PUBLIC_COMPANY_NAME=${{ secrets.NEXT_PUBLIC_COMPANY_NAME }}" >> .env.local
+            echo "NEXT_PUBLIC_DOMAIN=${{ secrets.NEXT_PUBLIC_DOMAIN }}" >> .env.local
+            echo "NEXT_PUBLIC_OWNER_NAME=${{ secrets.NEXT_PUBLIC_OWNER_NAME }}" >> .env.local
+            echo "NEXT_PUBLIC_POSTFACH=${{ secrets.NEXT_PUBLIC_POSTFACH }}" >> .env.local
+            echo "NEXT_PUBLIC_ADDR_STREET=${{ secrets.NEXT_PUBLIC_ADDR_STREET }}" >> .env.local
+            echo "NEXT_PUBLIC_ADDR_ZIP_AND_CITY=${{ secrets.NEXT_PUBLIC_ADDR_ZIP_AND_CITY }}" >> .env.local
+            echo "NEXT_PUBLIC_PHONE_NUMBER=${{ secrets.NEXT_PUBLIC_PHONE_NUMBER }}" >> .env.local
+            echo "NEXT_PUBLIC_UST_NR=${{ secrets.NEXT_PUBLIC_UST_NR }}" >> .env.local
             pnpm install
             pnpm run build
             pm2 reload vanity-service --update-env

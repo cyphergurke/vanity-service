@@ -16,7 +16,7 @@ const LegalPage = ({ params }: { params: { locale: any } }) => {
                         <Link href={`tel:${process.env.PHONE_NUMBER}`} className="mt-5 text-violet-500">
                             {process.env.PHONE_NUMBER}
                         </Link>
-                        <p>{process.env.EMAIL_ADDRESS}</p>
+                        <p>{process.env.NEXT_PUBLIC_EMAIL_ADDRESS}</p>
                         <br />
                         <p>Umsatzsteuer-Identifikationsnummer (USt-IdNr.): {process.env.UST_NR}</p>
                     </div>

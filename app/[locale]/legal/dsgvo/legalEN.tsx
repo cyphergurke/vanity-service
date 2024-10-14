@@ -58,14 +58,14 @@ const LegalEN = () => {
 
       </p>
 
-      <p>{process.env.COMPANY_NAME}</p><br />
-      <p>{process.env.POSTFACH}</p>
-      <p>{process.env.ADDR_STREET}</p>
-      <p>{process.env.ADDR_ZIP_AND_CITY}</p>
+      <p>{process.env.NEXT_PUBLIC_COMPANY_NAME}</p><br />
+      <p>{process.env.NEXT_PUBLIC_POSTFACH}</p>
+      <p>{process.env.NEXT_PUBLIC_ADDR_STREET}</p>
+      <p>{process.env.NEXT_PUBLIC_ADDR_ZIP_AND_CITY}</p>
       <p>Deutschland</p><br />
       <p>Tel.: {process.env.PHONE_NUMBER}</p><br />
-      <p>E-Mail: {process.env.EMAIL_ADDRESS}</p><br />
-      <p>Website: {process.env.DOMAIN}</p><br />
+      <p>E-Mail: {process.env.NEXT_PUBLIC_EMAIL_ADDRESS}</p><br />
+      <p>Website: {process.env.NEXT_PUBLIC_DOMAIN}</p><br />
 
       <br /><h4>3. Cookies</h4>
       <p>The Internet pages of the Bitcoin Uni use cookies. Cookies are text files that are stored in a computer system via an Internet browser.</p>
