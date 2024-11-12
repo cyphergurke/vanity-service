@@ -10,7 +10,6 @@ const Details = ({ order, payment }: { order: IOrder, payment?: IPayment }) => {
         time: '',
     });
     const c = useTranslations('Checkout')
-    console.log(payment)
 
     useEffect(() => {
         const date = new Date(order.createdAt).toLocaleDateString();

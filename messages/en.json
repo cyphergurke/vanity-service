@@ -23,7 +23,7 @@
     "prefix": {
       "title": "2. Select the prefix",
       "subtitle": "What characters should be included in the address?\n (Input without address type)",
-      "disallowed-prefix": "Disallowed character detected in address prefix",
+      "disallowedPrefix": "Disallowed character detected in address prefix",
       "disallowedfirstchar": "Disallowed first character",
       "invalid-prefix": "Invalid characters in address prefix",
       "casesensitive": "Case-sensitive"
